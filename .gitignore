@@ -1,0 +1,52 @@
+syntax: glob
+
+# No backup files 
+*~
+.~*
+
+# No .class
+*.class
+
+# No temp latex
+*.gz
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+.recommenders
+
+# No spurious
+.fuse*
+*.backup
+.~
+.directory
+.DS_Store
+*.index
+*.lck
+*META*
+
+# folders
+code/oop22-slides/bin/*
+code/.gitignore
+old/*
+code/.metadata/*
+slides/build/*
+code/oop21-slides/src/aula/*
+code/oop21-slides/src/aula20/*
+code/oop21-slides/.classpath
+code/oop21-slides/.gitignore
+code/oop21-slides/.project
+code/oop21-slides/.settings/
+code/prova/*
+
+# no pdf and zip
+
+*.pdf
+*.zip
+*.fls
+*.fdb_latexmk
+
+/.metadata/
