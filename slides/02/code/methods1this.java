@@ -1,12 +1,12 @@
 class A {
   int i;
-  void aggiungi(int a){ 
+  void add(int a){
     this.i = this.i + a;    // this.i: il "mio" campo i
   }
-  int restituisciValore(){    
-    return this.i;           
+  int getValue(){
+    return this.i;
   }
-  int get(){		// Un alias per restituisciValore
-    return this.restituisciValore();
+  int get(){		// Un alias per getValue
+    return this.getValue();
   }
 }
