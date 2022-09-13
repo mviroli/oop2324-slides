@@ -1,5 +1,5 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 \title[OOP01: Object-orientation]{01 \\ Ingegneria e astrazione object-oriented}
 
@@ -119,16 +119,15 @@
   }}
 }
 
-\fr{I limiti del linguaggio C}{
+\fr{Alcune caratteristiche/limiti del linguaggio C}{
   \bl{Il C porta ad una visione piuttosto machine-oriented}{\iz{
     \item \`E un livello di astrazione fortemente influenzato dall'HW sul quale si eseguono i programmi (CPU, memoria)
-    \item Ciò porta a varie inadeguatezze
+    \item Ciò porta a
     {\iz{
-      \item uso criptico di direttive/parametri di compilazione
       \item allocazione/deallocazione dinamica della memoria via librerie
       \item difficile controllo degli errori di esecuzione
       \item difficoltà a controllare gli aspetti HW-dependent
-      \item difficoltà a modificare codice già ``acquisito''
+      \item difficoltà a comprendere/gestire codice scritto da altri
     }}
     \item Nota: il C nasce negli anni '70 per rimpiazzare l'Assembly nell'implementazione del sistema operativo UNIX
   }}
@@ -137,7 +136,7 @@
   }}
 }
 
-\frs{5}{L'ecosistema dei linguaggi di programmazione}{
+\frs{10}{L'ecosistema dei linguaggi di programmazione}{
   \bl{Linguaggi e livelli di astrazione / paradigma}{\iz{
     \item C, Pascal: Computing function/procedure over data structures
     \item Lisp,ML: Everything is a function
@@ -151,8 +150,9 @@
   \bl{Il futuro dei linguaggi (e anche la direzione dei linguaggi OOP)}{\iz{
     \item OO + funzionale + concorrenza: Scala, Kotlin, Java 8+
   }}
-  \bl{Il caso dei linguaggi dinamici...}{\iz{
-    \item Python, Ruby, JavaScript: orientati a scripting e piccola-media/scala
+  \bl{Il caso dei linguaggi dinamici\dots}{\iz{
+    \item Python, Ruby, JavaScript: orientati a scripting
+    \item molto diffusi in applicazioni Web, machine learning,\dots
   }}
 }
 
@@ -168,7 +168,7 @@
 }}
   \bl{Le critiche all'OOP}{\iz{
     \item Serve molta disciplina per ``scalare bene'' con la complessità del problema, ossia, per non incorrere in problemi di gestibilità al crescere della complessità del sistema da realizzare
-    \item Altri paradigmi (p.e., funzionale) suggeriscono in parte come farlo...
+    \item Altri paradigmi (p.e., funzionale) suggeriscono in parte come farlo\dots
 }}
 }
 
@@ -191,7 +191,7 @@
 }
 
 \fr{Oggetto e sistema ad oggetti}{
-  \fg{width=0.9\textwidth}{01/img/objects.pdf}
+  \fg{width=0.9\textwidth}{img/objects.pdf}
 }
 
 
@@ -217,7 +217,7 @@
     \bl{Il vantaggio delle soluzioni object-oriented}{\iz{
 	\item Consentono di ``portare'' il problem space nel solution space in modo diretto
 	\item Usando gli stessi concetti object-oriented anche a livello di programmazione
-	\item ..ossia supportano il concetto di ``buon progetto'' che abbiamo discusso
+	\item \dots ossia supportano il concetto di ``buon progetto'' che abbiamo discusso
     }}
 }
 
@@ -243,7 +243,7 @@
     \item Un messaggio ha effetto su stato e comportamento dell'oggetto
   }}
   \bx{Esempio ``lampadina'' in notazione UML (Unified Modelling Language):}
-  \fg{width=0.6\textwidth}{01/img/light.png}
+  \fg{width=0.6\textwidth}{img/light.png}
 }
 
 \fr{Un oggetto fornisce un servizio}{
@@ -273,9 +273,9 @@
   \item Principio: ``less is more''
   \item Tipica struttura di una classe \iz{
    \item interfaccia: la sola visibile al cliente, di norma
-   \item \alert{membri} (o \alert{campi}) della classe (i sotto-oggetti di cui è costituito)
+   \item \alert{campi} della classe (i sotto-oggetti di cui è costituito)
    \item implementazione metodi (cosa fa l'oggetto quando riceve messaggi){\iz{
-    \item come cambia lo stato (membri)
+    \item come cambia lo stato (campi)
     \item quali messaggi manda ad altri oggetti
     \item quale risultato fornisce (risposta al messaggio)
    }}
@@ -296,7 +296,7 @@
   \item Questa relazione può essere nascosta, e resa dinamica
   }}
   \bx{Esempio ``car+engine'' in notazione UML:}
-  \fg{width=0.6\textwidth}{01/img/car.png}
+  \fg{width=0.6\textwidth}{img/car.png}
 }
 
 \frs{5}{Il riuso tramite ereditarietà}{
@@ -306,7 +306,7 @@
   \item Relazione chiamata ``is-a'' (``è un'')
   }}
   \bx{Esempio ``shape'' in notazione UML:}
-  \fg{width=0.4\textwidth}{01/img/shape.png}
+  \fg{width=0.4\textwidth}{img/shape.png}
 }
 
 % \fr{Polimorfismo e sostituibilità}{
@@ -380,7 +380,7 @@
 	\item fonte: \myurl{https://www.google.it/search?q=tiobe+tcpi}
 		\item (indice usato per decisione strategiche nello sviluppo di nuovi SW)
     }}
-    \item \dots C, Java e Python al momento quasi equivalenti
+    \item \dots Python (in crescita), C, Java sono gli unici sopra al 10\%
   }}
   \bl{In questo corso}{\iz{
     \item Useremo Java come riferimento per programmazione/progettazione
@@ -390,9 +390,9 @@
 }
 
 \fr{Strumenti Java}{
-  \bl{Java Development Kit (JDK) -- useremo la versione OpenJDK 11}{\iz{
+  \bl{Java Development Kit (JDK) -- useremo la versione OpenJDK 17}{\iz{
     \item Insieme di tool per lo sviluppatore
-    \item \myurl{https://openjdk.java.net/} o meglio \myurl{https://adoptopenjdk.net/}
+    \item \myurl{https://adoptopenjdk.net/}
   }}
   \bl{Java Virtual Machine (JVM) -- inclusa nel JDK}{\iz{
     \item Un programma (C/C++) che carica i binari delle classi e le esegue
@@ -405,7 +405,7 @@
 }
 
 \fr{Write once run everywhere}{
-\fg{height=0.8\textheight}{01/img/java-program-execution.png}
+\fg{height=0.8\textheight}{img/java-program-execution.png}
 }
 
 \frs{5}{Sviluppo storico di Java}{
@@ -414,18 +414,16 @@
   \item Java 2 (1998): aggiunta del framework Swing
   \item Java 5 (2004): aggiunta di generici, inner class, annotazioni
   \item Java 8 (2014): aggiunta lambda expression e streams
-  \item Java 9 (2017): aggiunta Java Module System
-  \item Java 10 (2018): aggiunta local variable type-inference
-  \item[$\Rightarrow$] Java 11 (2018): versione ``long-term support'' (LTS) che useremo
-  \item Java 12$\rightarrow$16 (2019-2021): piccole aggiunte
-  \item Java 17 (sept. 2021): LTS appena giunta, non la useremo
+  \item Java 9-16 (2017-2021): aggiunte minori Java Module System, 
+  \item[$\Rightarrow$]  Java 17 (sept. 2021): versione ``long-term support'' (LTS) che useremo
+  \item \dots
 }}
 \bl{Modello di sviluppo attuale}{\iz{
   \item Da Java 9, si ha una nuova release ogni 6 mesi
-  \item Java 11 è (quasi) l'ultima LTS, e si raccomanda di non rimanere indietro
+  \item Java 17 è l'ultima LTS, e si raccomanda di non rimanere indietro
   \item Oracle detiene il marchio e una implementazione ``commerciale''
   \item L'iniziativa OpenJDK produce una ulteriore implementazione open che è di riferimento -- quella che useremo noi
-  \item Esistono anche altre JVM (Eclipse OpenJ9, Amazon Corretto,...)
+  \item Esistono anche altre JVM (Eclipse OpenJ9, Amazon Corretto,\dots)
 }}
 }
 

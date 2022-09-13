@@ -1,14 +1,11 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 \title[OOP02: Oggetti e classi]{02 \\ Oggetti e classi}
 
 \begin{document}
 
 \frame[label=coverpage]{\titlepage}
-
-\newcommand{\ecl}{\eclipsepath{p02objects}}
-
 
 \fr{Outline}{
   \bl{Goal della lezione}{\iz{
@@ -33,7 +30,7 @@
   \item Nessun meccanismo per accedere ai dati per valore o puntatore!
   \item Le variabili conterranno dei riferimenti agli oggetti veri e propri, sono quindi dei nomi ``locali'' utilizzabili per denotare l'oggetto
   }}
-  \sizedcode{\footnotesize}{02/code/references.java}
+  \sizedcode{\footnotesize}{code/references.java}
 }
 
 \fr{Variabili, oggetti, e valori primitivi}{
@@ -41,7 +38,7 @@
   \item Variabile: un contenitore con nome (come in C), usabile per denotare un oggetto
   \item Valore primitivo: p.e. un numero, anche assegnabile ad una variabile
   }}
-  \sizedcode{\footnotesize}{02/code/references2.java}
+  \sizedcode{\footnotesize}{code/references2.java}
 }
 
 
@@ -53,15 +50,15 @@
   %\item Ognuno ha una corrispondente classe chiamata \alert{wrapper}
   \item Altre classi di libreria (\cil{BigDecimal}, \cil{BigInteger}) gestiscono numeri di dimensione/precisione arbitraria
   }}
-  \fg{width=0.7\textwidth}{02/img/primitive.png}
+  \fg{width=0.6\textwidth}{img/primitive.png}
 }
 
 \fr{Una prima classificazione dei tipi}{
-  \fg{width=1\textwidth}{02/img/types0.pdf}
+  \fg{width=1\textwidth}{img/types0.pdf}
 }
 
 \fr{Variabili e tipi}{
-  \sizedcode{\footnotesize}{02/code/vars0.java}
+  \sizedcode{\footnotesize}{code/vars0.java}
 }
 
 \frs{5}{Costrutto \Cil{var}: ``local variable type inference'' (da Java 10)}{
@@ -70,7 +67,7 @@
     \item il compilatore capisce (inferisce) il tipo della varibile dall'espressione assegnata
     \item non abusarne, e comunque noi non lo useremo molto all'inizio del corso
   }}
-  \sizedcode{\footnotesize}{02/code/vars1.java}
+  \sizedcode{\footnotesize}{code/vars1.java}
 }
 
 
@@ -111,7 +108,7 @@
 \fr{Costruire classi}{
   \bl{Premesse}{\iz{
     \item la \alert{classe} è l'unità fondamentale di programmazione OO
-    \item progettare e costruire classi correttamente sarà l'obbiettivo del corso
+    \item progettare e costruire classi correttamente sarà l'obiettivo del corso
     \item incominciamo descrivendo la loro struttura generale
     \item daremo via via linee guida sempre più precise
   }}
@@ -131,11 +128,11 @@
   \bl{Nome della classe}{
   è anche il nome del tipo
   }
-  \bl{Proprietà della classe}{
-    \alert{Campi} (o membri, o fields){\iz{
+  \bl{Membri della classe}{
+    \alert{Campi} (in inglese, fields){\iz{
       \item descrivono la struttura/stato dell'oggetto in memoria
     }}
-    \alert{Metodi} della classe{\iz{
+    \alert{Metodi} (in inglese, methods){\iz{
       \item descrivono i messaggi accettati e il comportamento corrispondente
     }}
     (altri elementi che vedremo..)
@@ -143,8 +140,8 @@
 }
 
 \fr{Classi: un po' di codice}{
-  \titledcode{Costruzione classi}{02/code/classes1.java}
-  \titledcode{Uso}{02/code/classes2.java}
+  \titledcode{Costruzione classi}{code/classes1.java}
+  \titledcode{Uso}{code/classes2.java}
 }
 
 \fr{Campi}{
@@ -168,13 +165,13 @@
   }
   
 \fr{Campi: un esempio ``toy'' (giocattolo)}{
-  \titledcode{Classe}{02/code/fields1.java}
-  \titledcode{Uso}{02/code/fields2.java}
+  \titledcode{Classe}{code/fields1.java}
+  \titledcode{Uso}{code/fields2.java}
 }
 
 \fr{Campi: un esempio realistico, \Cil{Point3D}}{
-  \titledcode{Classe}{02/code/fields_p3d_1.java}
-  \titledcode{Uso}{02/code/fields_p3d_2.java}
+  \titledcode{Classe}{code/fields_p3d_1.java}
+  \titledcode{Uso}{code/fields_p3d_2.java}
 }
 
 \fr{Metodi}{
@@ -196,8 +193,8 @@
   }
   
 \fr{Metodi: esempio toy}{
-  \titledcode{Classe}{02/code/methods1.java}
-  \titledcode{Uso}{02/code/methods2.java}
+  \titledcode{Classe}{code/methods1.java}
+  \titledcode{Uso}{code/methods2.java}
 }
 
 \fr{La variabile speciale \Cil{this}}{
@@ -206,13 +203,13 @@
     \item per rendere meno ambigua la sintassi, Java fornisce una variabile speciale denotata con \cil{this}, che contiene il riferimento all'oggetto che sta gestendo il messaggio corrente
     \item per motivi di leggibilità, è opportuno usarla sempre in questo corso
   }}
-  \sizedcode{\scriptsize}{02/code/methods1this.java}
+  \sizedcode{\scriptsize}{code/methods1this.java}
 }
 
 
 \fr{Metodi: altro esempio Point3D}{
-  \sizedcode{\scriptsize}{02/code/methods_p3d_1.java}
-  %\titledcode{Uso}{02/code/methods_p3d_2.java}
+  \sizedcode{\scriptsize}{code/methods_p3d_1.java}
+  %\titledcode{Uso}{code/methods_p3d_2.java}
 }
 
 \section{Programmi Java}
@@ -236,8 +233,8 @@
 
 \fr{Package e librerie Java: organizzazione}{
   \bl{Librerie di Java}{\iz{
-    \item Documentazione auto-generata, consultabile offline, o online: \\ \myurl{https://docs.oracle.com/en/java/javase/11/docs/api/} \\ (google search ``\texttt{javadoc 11}'')
-    \item contano più di 4000 classi, raggruppate in 200+ \alert{package} (e 50+ \alert{moduli})
+    \item Documentazione auto-generata, consultabile offline, o online: \\ \myurl{https://docs.oracle.com/en/java/javase/17/docs/api/} \\ (google search ``\texttt{javadoc 17}'')
+    \item contano 4000+ classi, raggruppate in 200+ \alert{package} (e 50+ \alert{moduli})
   }}
   \bl{Package}{\iz{
     \item un package è un contenitore di classi con uno scopo comune, di alto livello
@@ -278,7 +275,7 @@
   }}
   \bl{Classi (e funzionalità) ``deprecate''}{\iz{
     \item dichiarate come ``scadute'', ossia preferibilmente ``da non usare più'' (legacy)
-    \item noi le utilizzeremo per scopi didattici
+    \item noi le utilizzeremo a volte per scopi didattici, solo a inizio corso
     \item p.e. \cil{java.util.Date}
   }}
 }
@@ -291,11 +288,11 @@
     \item l'operatore \cil{+} concatena stringhe a valori
     %\item \cil{format} è un analogo metodo usabile in stile ``\cil{printf}''
   }}
-  \code{02/code/print.java}
+  \code{code/print.java}
 }
 
 \fr{``Hello world'' Java Program}{
-  \titledcode{Hello.java}{02/exec/Hello.java}
+  \titledcode{Hello.java}{exec/Hello.java}
   \bl{Compilazione ed esecuzione}{\iz{
     \item con un editor di testo si scrive la classe in un file \cil{Hello.java}
     \item si compila la classe col comando: \cil{javac Hello.java}
@@ -307,31 +304,16 @@
 }
 
 \fr{Librerie, oggetti, e stampe}{
-  \sizedcode{\scriptsize}{02/exec/PrintingObjects.java}
-}
-
-\fr{Il caso delle classi Wrapper dei tipi primitivi}{
-   \bl{Le classi Wrapper}{\iz{
-      \item ce ne è una per tipo primitivo, nel package \cil{java.lang}{\iz{
-         \item \cil{Integer}, \cil{Double}, \cil{Boolean},...
-      }}
-      \item hanno qualche metodo utile per fare conversioni
-      \item poco usate per il momento
-   }}
-   \srcode{\ssmall}{3}{100}{\ecl/Wrappers.java}
-}
-
-\fr{Una nuova classificazione dei tipi}{
-  \fg{width=1\textwidth}{02/img/types.pdf}
+  \sizedcode{\scriptsize}{exec/PrintingObjects.java}
 }
 
 \fr{Costruire e provare classi}{
-  \sizedcode{\scriptsize}{02/exec/Point3D.java}
+  \sizedcode{\scriptsize}{exec/Point3D.java}
 }
 
 \fr{Classi, e classi clienti}{
-  \sizedcode{\tiny}{02/code/Point3D_a.java}
-  \sizedcode{\tiny}{02/exec/UsePoint3D.java}
+  \sizedcode{\tiny}{code/Point3D_a.java}
+  \sizedcode{\tiny}{exec/UsePoint3D.java}
   \vspace{-10pt}\bx{\iz{
   \item si compilano separatamente, o con: \cil{javac *.java}
   \item si esegue a partire dalla classe col \cil{main}: \cil{java UsePoint3D}
@@ -339,7 +321,7 @@
 }
 
 \fr{Preview del prossimo laboratorio}{
-  \bl{Obbiettivi}{\iz{
+  \bl{Obiettivi}{\iz{
     \item familiarizzare con la compilazione da linea di comando in Java
     \item fare qualche esercizio con la costruzione e uso di classi
   }}
