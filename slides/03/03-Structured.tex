@@ -1,11 +1,11 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
-\title[OOP03: Prg. strutturata in Java]{03 \\ Programmazione strutturata in Java}
+\title[OOP03: Prg. strutturata (C-like) in Java]{03 \\ Programmazione strutturata (C-like) in Java}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p03imperative}}
+\newcommand{\ecl}{\idepath{p03structured}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -36,10 +36,10 @@
   \bl{Tipi di Java}{\iz{
   \item Primitivi: \cil{boolean}, \cil{byte}, \cil{short}, \cil{int}, \cil{long}, \cil{float}, \cil{double}, \cil{char}
   \item Array: \cil{boolean[]}, \cil{byte[]}, \cil{String[]}, \cil{String[][]},$\ldots$
-  \item Classi: \cil{Object}, \cil{String}, \cil{Integer}, \cil{ArrayList}, \cil{JFrame},$\ldots$
+  \item Classi: \cil{Object}, \cil{String}, \cil{ArrayList}, \cil{JFrame},$\ldots$
   \item Altri che vedremo in seguito: interfacce, classi innestate, generici,...
   }}
-  \bl{Java e i tipi..}{\iz{
+  \bl{Java e i tipi\dots}{\iz{
     \item diversamente da linguaggi dinamici (ad esempio, JavaScript, Python,$\ldots$)
     \item Java ha ``typing statico'': ogni espressione ha un tipo noto al compilatore
     \item e ``typing forte'': non si accettano espressioni con tipo diverso da quello atteso
@@ -70,8 +70,7 @@
 }
 
 \fr{Tipi numerici}{
-  \fg{width=0.7\textwidth}{02/img/primitive.png}
-  \cil{void} non è esattamente un tipo\ldots
+  \fg{width=0.7\textwidth}{img/primitive.png}
 }
 
 \frs{5}{Interi: \Cil{byte}, \Cil{short}, \Cil{int}, \Cil{long}}{
@@ -314,7 +313,7 @@
     \item Le (max) 10 iterazioni sono realizzabili da un ciclo (p.e., \cil{for})
   }}
   \bl{Elementi implementativi}{\iz{
-    \item \cil{java.io.Console.readLine} usabile per leggere input da tastiera
+    \item \cil{System.console().readLine} usabile per leggere input da tastiera
     \item \cil{java.lang.Integer.parseInt} usabile per convertire una stringa in un numero
     \item \cil{java.util.Random.nextInt} usabile per ottenere un numero random
   }}
@@ -325,7 +324,7 @@
   \srcode{\scriptsize}{3}{100}{\ecl/GuessMyNumberApp.java}
 }
 
-\section{Sulla qualità del software}
+\section{Un addendum: sula qualità del software\dots}
 
 \fr{Come è fatto del ``buon software''?}{
   \bl{Qualità esterna -- aspetti funzionali}{\iz{
@@ -343,7 +342,7 @@
     \item[$\Rightarrow$] ci concentriamo per ora su questa tipologia 
   }}
 }
-
+    
 \fr{Caratteristiche di qualità interna}{
   \bl{Elementi necessari per il funzionamento}{\iz{
     \item Sintassi: soddisfa la grammatica del linguaggio
@@ -388,7 +387,8 @@
     \item Riguardano indentazione, commenti, dichiarazioni, convenzioni sui nomi
     \item Migliorano leggibilità, e quindi comprensione
     \item È cruciale che vengano seguite
-    \item \myurl{http://www.oracle.com/technetwork/java/codeconv-138413.html}
+    \item \myurl{https://www.oracle.com/technetwork/java/codeconventions-150003.pdf}
+    \item Alcuni team usano convenzioni ancora più ristrette (Google)
   }}
   \bl{Li vedremo via via\dots intanto focalizziamoci sulla formattazione}{\iz{
     \item Una istruzione per linea

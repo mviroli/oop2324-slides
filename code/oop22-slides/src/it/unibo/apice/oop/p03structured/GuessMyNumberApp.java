@@ -1,6 +1,5 @@
 package it.unibo.apice.oop.p03imperative;
 
-import java.io.Console; 
 import java.util.Random;
 
 public class GuessMyNumberApp {
@@ -20,7 +19,5 @@ public class GuessMyNumberApp {
 				System.out.println("Your guess is lower, try again..");
 			}
 		}
-
 	}
-
 }
