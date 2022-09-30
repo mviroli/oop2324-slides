@@ -1,6 +1,5 @@
 package it.unibo.apice.oop.p04objects;
 
-import java.io.Console; // Classe non funzionante dall'IDE Eclipse
 import java.util.Random;
 
 public class GuessMyNumberApp {

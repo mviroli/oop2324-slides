@@ -1,10 +1,7 @@
-
-
-import java.io.Console; // Classe non funzionante dall'IDE Eclipse
 import java.util.Random;
 
 public class GuessMyNumberApp {
-	
+
 	public static final int ATTEMPTS = 10;
 	public static final int MAX_GUESS = 100;
 	public static final int MIN_GUESS = 1;

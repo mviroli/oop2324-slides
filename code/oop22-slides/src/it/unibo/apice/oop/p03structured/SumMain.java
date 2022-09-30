@@ -1,4 +1,4 @@
-package it.unibo.apice.oop.p03imperative;
+package it.unibo.apice.oop.p03structured;
 
 class SumMain {
 	public static int sum(int[] array) { // soluzione con for-each

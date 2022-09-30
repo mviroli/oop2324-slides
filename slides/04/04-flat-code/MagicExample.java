@@ -1,8 +1,6 @@
-
-
 public class MagicExample {
 	// Put 100 into a constant and give it a name!!
-	private static final int SIZE = 100000;
+	private static final int SIZE = 100;
 
 	public static void main(String[] s) {
 		double[] array = new double[SIZE];

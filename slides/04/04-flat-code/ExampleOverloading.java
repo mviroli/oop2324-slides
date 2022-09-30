@@ -1,5 +1,3 @@
-
-
 class ExampleOverloading {
 	static int m(double a, int b) {
 		return 1;

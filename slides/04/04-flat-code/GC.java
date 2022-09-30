@@ -1,9 +1,7 @@
-
-
 class GC {
 	private static long size = 1000;
 
-	public static void main(String[] s) throws Exception {
+	public static void main(String[] s) {
 		// Runtime dà info sull'esecuzione
 		Runtime r = Runtime.getRuntime();
 

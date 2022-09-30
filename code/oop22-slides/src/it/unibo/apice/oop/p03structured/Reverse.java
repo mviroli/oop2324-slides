@@ -1,4 +1,4 @@
-package it.unibo.apice.oop.p03imperative;
+package it.unibo.apice.oop.p03structured;
 
 import java.util.Arrays; // Classe con funzioni di utilità
 

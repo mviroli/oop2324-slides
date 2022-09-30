@@ -37,6 +37,8 @@ public class TwoLampsDevice {
 		this.l2.switchOn();
 		this.l2.setIntensity(0.5);
 	}
-	
-	
+
+	public String toString() {
+		return "TwoLampsDevice [l1=" + l1 + ", l2=" + l2 + "]";
+	}	
 }

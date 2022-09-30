@@ -1,5 +1,3 @@
-package it.unibo.apice.oop.p04objects;
-
 class UsePoint3D {
 	public static void main(String[] s) {
 		// creo e inizializzo vari punti

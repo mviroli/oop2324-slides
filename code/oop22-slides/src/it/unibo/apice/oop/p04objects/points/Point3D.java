@@ -12,8 +12,7 @@ class Point3D {
 		return this;
 	}
 
-	double getModuloQuadro() { 
+	double getSquaredModulus() { 
 		return this.x * this.x + this.y * this.y + this.z * this.z;
 	}
-
 }

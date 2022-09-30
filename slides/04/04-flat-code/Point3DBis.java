@@ -1,5 +1,3 @@
-package it.unibo.apice.oop.p04objects;
-
 class Point3DBis { // dichiarazione classe
 	double x; // 3 campi
 	double y;
@@ -12,7 +10,7 @@ class Point3DBis { // dichiarazione classe
 		return this;
 	}
 
-	double getSquaredModulus() { 
+	double getSquaredModulus() {
 		return this.x * this.x + this.y * this.y + this.z * this.z;
 	}
 
