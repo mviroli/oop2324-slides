@@ -1,12 +1,12 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 
 \title[OOP11: Generici e Collezioni advanced]{11 \\ Generici e collezioni, pt 2}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p11gencoll2}}
+\newcommand{\ecl}{\idepath{p11gencoll2}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -26,11 +26,11 @@
 \section{Il problema della type-erasure}
 
 \fr{La classe generica \Cil{List}}{
-  \sizedcode{\scriptsize}{09/code/List.java}
+  \sizedcode{\scriptsize}{../09/code/List.java}
 }
 
 \fr{Uso di una classe generica}{
-  \sizedcode{\scriptsize}{09/code/generics/UseList.java}
+  \sizedcode{\scriptsize}{../09/code/generics/UseList.java}
 }
 
 \fr{Terminologia, e elementi essenziali}{
@@ -53,7 +53,7 @@
   }}
 }
 
-\fr{Limitazioni all'uso dei generici}{
+\frs{5}{Limitazioni all'uso dei generici}{
   \bl{Una type-variable (\cil{X}) non è usabile in istruzioni del tipo:}{\iz{
     \item \cil{new X()}, \cil{new X[]\{..\}}, \cil{new X[10]}, \cil{instanceof X}
     \item Il compilatore segnala un errore
@@ -79,23 +79,27 @@
   \bl{Un dettaglio della sua implementazione:}{
   Per via della type erasure, il suo campo non può essere di tipo \cil{X[]}, bensì \cil{Object[]}
   }
-  \sizedcode{\footnotesize}{09/code/Vector.java}
+  \sizedcode{\footnotesize}{../09/code/Vector.java}
 }
 
 \fr{Uso di \Cil{Vector<X>}}{
-  \sizedrangedcode{\scriptsize}{3}{100}{\eclipsepath{p09generics}/generics/UseVector.java}
+  \sizedrangedcode{\scriptsize}{3}{100}{\idepath{p09generics}/generics/UseVector.java}
 }
 
 \fr{Implementazione di \Cil{Vector} pt 1}{
-\sizedrangedcode{\ssmall}{3}{26}{\eclipsepath{p09generics}/generics/Vector.java}
+\sizedrangedcode{\ssmall}{3}{26}{\idepath{p09generics}/generics/Vector.java}
 }
 
 \fr{Implementazione di \Cil{Vector} pt 2}{
-\sizedrangedcode{\ssmall}{27}{100}{\eclipsepath{p09generics}/generics/Vector.java}
+\sizedrangedcode{\ssmall}{27}{100}{\idepath{p09generics}/generics/Vector.java}
 }
 
-\fr{Ancora sugli ``unchecked warning'' coi generici}{
+\frs{5}{Ancora sugli ``unchecked warning'' coi generici}{
 \sizedrangedcode{\scriptsize}{3}{100}{\ecl/abstractions/ShowCast.java}
+\bl{Unchecked warning e ``unsafety''}{\iz{
+    \item un unchecked warning per via di conversione con genericità espone l'esecuzione dei nostri programmi a possibili errori successivi (così come i downcast)
+    \item usarli solo se si è certi ciò non succeda (in tal caso vedremo come ``silenziare il warning''
+}}
 }
 
 \section{Polimorfismo vincolato}
@@ -128,8 +132,8 @@
 
 
 \fr{Java Wildcards}{
-  \sizedcode{\footnotesize}{09/code/Numbers.java}
-  \sizedcode{\footnotesize}{09/code/Wildcards.java}
+  \sizedcode{\footnotesize}{../09/code/Numbers.java}
+  \sizedcode{\footnotesize}{../09/code/Wildcards.java}
 }
 
 \fr{Java Wildcards}{
@@ -153,15 +157,15 @@
 }
 
 %\fr{Esempio Wildcard Bounded covariante: \Cil{C<? extends T>}}{
-%  \sizedcode{\scriptsize}{09/code/Cov.java}
+%  \sizedcode{\scriptsize}{../09/code/Cov.java}
 %}
 %
 %\fr{Esempio Wildcard Bounded controvariante: \Cil{C<? super T>}}{
-%  \sizedcode{\scriptsize}{09/code/Contra.java}
+%  \sizedcode{\scriptsize}{../09/code/Contra.java}
 %}
 %
 %\fr{Esempio Wildcard Unbounded: \Cil{C<?>}}{
-%  \sizedcode{\scriptsize}{09/code/Unbounded.java}
+%  \sizedcode{\scriptsize}{../09/code/Unbounded.java}
 %}
 
 
@@ -173,15 +177,16 @@
     cosa succede se nel metodo qui sotto passiamo un \cil{Vector<Integer>}?\\
     $\Rightarrow$ potremmo facilmente compromettere l'integrità del vettore
   }
-  \sizedcode{\footnotesize}{09/code/Covariance.java}
+  \sizedcode{\footnotesize}{../09/code/Covariance.java}
 }
 
-\fr{Subtyping e safety}{
+\frs{5}{Subtyping e safety}{
   \bl{\alert{Safety} di un linguaggio OO}{
     Se nessuna combinazione di istruzioni porta a poter invocare un metodo su un oggetto la cui classe non lo definisce{\iz{
       \item \`E necessario che il subtyping segua il principio di sostituibilità
+      \item In Java bisogna evitare gli usi di downcast e unchecked cast
     }}
-    Più in generale, se non possono accadere errori a tempo di esecuzione..
+    Più in generale, se non possono accadere errori a tempo di esecuzione\dots
   }
   \bl{Java}{\iz{
     \item Si pone dove possibile l'obbiettivo della safety
@@ -196,17 +201,17 @@
 }
 
 \fr{Unsafety con gli array di Java}{
-  \bl{Gli array di Java sono trattati come covarianti!}{\iz{
+  \bl{Fin da Java 1, gli array di Java sono stati trattati come covarianti!}{\iz{
     \item Gli array assomigliano moltissimo ad un tipo generico
     \item \cil{Integer[]} $\sim$ \cil{Array<Integer>}, \cil{T[]} $\sim$ \cil{Array<T>}
     \item E quindi sappiamo che non sarebbe safe gestirli con covarianza
     \item E invece in Java è esattamente così!! P.e. \cil{Integer[] <: Object[]}
-    \item Quindi ogni scrittura su array potrebbe potenzialmente fallire\dots lanciando un \cil{ArrayStoreException}
+    \item Quindi ogni scrittura su array potrebbe successivamente potenzialmente fallire\dots{} lanciando un \cil{ArrayStoreException}
   }}
-  \sizedcode{\footnotesize}{09/code/Arrays.java}
+  \sizedcode{\footnotesize}{../09/code/Arrays.java}
 }
 
-\fr{Covarianza e operazioni di accesso}{
+\frs{5}{Covarianza e operazioni di accesso}{
   \bl{La covarianza (\cil{C<T> <: C<S>} con \cil{T <: S}) sarebbe ammissibile se:}{\iz{
     \item La classe \cil{C<X>} non avesse operazioni che ricevono oggetti \cil{X}
     \item Ossia, ha solo campi privati e nessun metodo con argomento \cil{X}
@@ -217,44 +222,46 @@
   }}
   \bl{In pratica:}{\iz{
     \item La maggior parte delle classi generiche \cil{C<X>} hanno campi di tipo \cil{X} (composizione) e operazioni getter e setter, e quindi per loro covarianza e controvarianza non funzionano
-    \item Con le wildcard si aumenta il riuso dei metodi che non usano tutte le funzione del tipo generico in input
+   }}
+  \bl{I wildcard types:}{\iz{ 
+    \item Sono delle ``interfacce'' sopratitpo dei tipi generici, per le quali invece vale co-/contro-varianza
   }}
 }
 
 
 \fr{Esempio Wildcard Bounded covariante: \Cil{C<? extends T>}}{
-  \sizedcode{\scriptsize}{09/code/variance/Cov.java}
+  \sizedcode{\scriptsize}{../09/code/variance/Cov.java}
 }
 
 \fr{Esempio Wildcard Bounded controvariante: \Cil{C<? super T>}}{
-  \sizedcode{\scriptsize}{09/code/variance/Contra.java}
+  \sizedcode{\scriptsize}{../09/code/variance/Contra.java}
 }
 
 \fr{Esempio Wildcard Unbounded: \Cil{C<?>}}{
-  \sizedcode{\scriptsize}{09/code/variance/Unbounded.java}
+  \sizedcode{\scriptsize}{../09/code/variance/Unbounded.java}
 }
 
 \fr{Un uso tipico: metodi in classi generiche}{
-  \sizedcode{\scriptsize}{09/code/VectFrag.java}
-  \sizedcode{\scriptsize}{09/code/variance/UseVector.java}
+  \sizedcode{\scriptsize}{../09/code/VectFrag.java}
+  \sizedcode{\scriptsize}{../09/code/variance/UseVector.java}
 }
 
 
 \fr{Un uso tipico: metodi in classi generiche}{
-  \sizedcode{\scriptsize}{09/code/VectFrag.java}
-  \sizedcode{\scriptsize}{09/code/variance/UseVector.java}
+  \sizedcode{\scriptsize}{../09/code/VectFrag.java}
+  \sizedcode{\scriptsize}{../09/code/variance/UseVector.java}
 }
 
 
 \section{Implementazioni di \cil{List}}
 
 \fr{Implementazione collezioni -- UML}{
-    \fg{height=0.75\textheight}{10/img/uml-abs.pdf}
+    \fg{height=0.75\textheight}{../10/img/uml-abs.pdf}
 }
 
 
 \fr{\Cil{List}}{
-  \sizedcode{\scriptsize}{10/code/short/List2.java}
+  \sizedcode{\scriptsize}{../10/code/short/List2.java}
 }
 
 \fr{Implementazioni di \Cil{List}}{
@@ -284,7 +291,7 @@
 
 
 \fr{\Cil{ArrayList}: aspetti aggiuntivi}{
-  \sizedcode{\scriptsize}{10/code/short/ArrayList.java}
+  \sizedcode{\scriptsize}{../10/code/short/ArrayList.java}
 }
 
 \fr{\Cil{UseArrayList}}{
@@ -305,12 +312,12 @@
 }
 
 \fr{\Cil{LinkedList}: funzioni aggiuntive relative a code (e stack)}{
-  \sizedcode{\ssmall}{10/code/short/Queue.java}
-  \sizedcode{\ssmall}{10/code/short/Deque.java}
+  \sizedcode{\ssmall}{../10/code/short/Queue.java}
+  \sizedcode{\ssmall}{../10/code/short/Deque.java}
 }
 
 \fr{\Cil{LinkedList}: costruzione}{
-  \sizedcode{\ssmall}{10/code/short/LinkedList.java}
+  \sizedcode{\ssmall}{../10/code/short/LinkedList.java}
 }
 
 \fr{\Cil{UseLinkedList}}{
@@ -331,12 +338,13 @@
   \bl{\cil{java.util.Collections}}{\iz{
     \item Raccoglie metodi statici che sarebbero potuti appartenere alle varie classi/interfacce viste
     \item Ricerca binaria (dicotomica), Ordinamento (quicksort), copia, min, max, sublist, replace, reverse, rotate, shuffle
+    \item Wrapper immutabili: unmodifiableList, unmodifiableSet
     \item Con esempi notevoli d'uso delle wilcard
   }}
 }
 
 \fr{\Cil{Arrays}: qualche esempio di metodi}{
-  \sizedcode{\ssmall}{10/code/short/Arrays.java}
+  \sizedcode{\ssmall}{../10/code/short/Arrays.java}
 }
 
 \fr{\Cil{UseArrays}: qualche esempio di applicazione}{
@@ -344,7 +352,7 @@
 }
 
 \fr{\Cil{Collections}: qualche esempio di metodi}{
-  \sizedcode{\ssmall}{10/code/short/Collections.java}
+  \sizedcode{\ssmall}{../10/code/short/Collections.java}
 }
 
 \fr{\Cil{UseCollections}: qualche esempio di applicazione}{
@@ -355,11 +363,11 @@
 
 
 \fr{JCF -- struttura semplificata}{
-  \fg{height=0.75\textheight}{10/img/tax.png}
+  \fg{height=0.75\textheight}{../10/img/tax.png}
 }
 
 \fr{\Cil{Map}}{
-  \sizedcode{\scriptsize}{11/code/short/Map_.java}
+  \sizedcode{\scriptsize}{code/short/Map_.java}
 }
 
 \fr{Usare le mappe}{

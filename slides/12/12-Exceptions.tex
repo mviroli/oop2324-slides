@@ -1,13 +1,13 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 
 \title[OOP12: Eccezioni]{12 \\ Errori di esecuzione ed Exceptions}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p12exceptions}}
-\newcommand{\ecls}{\eclipsepath{p12exceptions/safedevices}}
+\newcommand{\ecl}{\idepath{p12exceptions}}
+\newcommand{\ecls}{\idepath{p12exceptions/safedevices}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -46,20 +46,20 @@
 }
 
 \fr{Errori per causa interna: lanciati dalla JVM}{
-  \titledcode{Errore numerico}{12/code/Div.java}
-  \titledcode{Overflow memoria}{12/code/Rec.java}
-  \titledcode{Riferimento null}{12/code/Null.java}
+  \titledcode{Errore numerico}{code/Div.java}
+  \titledcode{Overflow memoria}{code/Rec.java}
+  \titledcode{Riferimento null}{code/Null.java}
 }
 
 \fr{Violazioni del contratto d'uso di un oggetto: librerie Java}{
-  \titledcode{Operazione non supportata}{12/code/Op.java}
-  \titledcode{Elemento non disponibile}{12/code/NoElement.java}
-  \titledcode{Formato illegale}{12/code/Format.java}
+  \titledcode{Operazione non supportata}{code/Op.java}
+  \titledcode{Elemento non disponibile}{code/NoElement.java}
+  \titledcode{Formato illegale}{code/Format.java}
 }
 
 \fr{Violazioni del contratto d'uso di un oggetto: nostro codice}{
-  \titledcode{Argomento errato}{12/code/Arg.java}
-  \titledcode{Elemento non disponibile}{12/code/It.java}
+  \titledcode{Argomento errato}{code/Arg.java}
+  \titledcode{Elemento non disponibile}{code/It.java}
 }
 
 \fr{L'importanza della ``error-aware programming''}{
@@ -107,7 +107,7 @@
 }
 
 \fr{Tipologie di errori in Java: UML}{
-  \fg{height=0.85\textheight}{12/img/uml-throw.pdf}
+  \fg{height=0.85\textheight}{img/uml-throw.pdf}
 }
 
 \fr{Usuale gestione}{
@@ -183,23 +183,23 @@
 }
 
 \fr{Documentazione di \Cil{Iterator}: header}{
-  \sizedcode{\ssmall}{12/code/util/Iterator1.java}
+  \sizedcode{\ssmall}{code/util/Iterator1.java}
 }
 
 \fr{Documentazione di \Cil{Iterator}: \Cil{next()} e \Cil{hasNext()}}{
-  \sizedcode{\ssmall}{12/code/util/Iterator2.java}
+  \sizedcode{\ssmall}{code/util/Iterator2.java}
 }
 
 \fr{Documentazione di \Cil{Iterator}: \cil{remove()}}{
-  \sizedcode{\ssmall}{12/code/util/Iterator3.java}
+  \sizedcode{\ssmall}{code/util/Iterator3.java}
 }
 
 \fr{Documentazione generata: pt1}{
-  \fg{height=0.9\textheight}{12/img/javadoc1.png}
+  \fg{height=0.9\textheight}{img/javadoc1.png}
 }
 
 \fr{Documentazione generata: pt2}{
-  \fg{height=0.9\textheight}{12/img/javadoc2.png}
+  \fg{height=0.9\textheight}{img/javadoc2.png}
 }
 
 \fr{Realizzazione di \Cil{RangeIterator}}{
@@ -250,7 +250,7 @@
 }
 
 \fr{\Cil{catch} multipli e \Cil{finally}}{
-  \sizedcode{\scriptsize}{12/code/classes/UseRange3.java}
+  \sizedcode{\scriptsize}{code/classes/UseRange3.java}
 }
 
 \fr{Spiegazione}{
@@ -346,7 +346,7 @@
 }
 
 \fr{UML: Modellazione \Cil{Device}}{
-  \fg{height=0.8\textheight}{12/img/uml-device.pdf}
+  \fg{height=0.8\textheight}{img/uml-device.pdf}
 }
 
 \fr{Interfaccia \Cil{Device}}{
@@ -423,7 +423,7 @@
 }
 
 \fr{UML: Design generale}{
-  \fg{height=0.8\textheight}{12/img/dia.jpg}
+  \fg{height=0.8\textheight}{img/dia.jpg}
 }
 
 \fr{\Cil{Controller}, pt1}{

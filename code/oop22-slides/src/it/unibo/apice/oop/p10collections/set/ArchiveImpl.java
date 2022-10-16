@@ -4,14 +4,14 @@ import java.util.*;
 
 public class ArchiveImpl implements Archive {
 
-	private final Set<Persona> set = new HashSet<>();
+	private final Set<Person> set = new HashSet<>();
 	
 	public void add(String nome, int annoNascita, boolean sposato) {
-		this.set.add(new Persona(nome,annoNascita,sposato));
+		this.set.add(new Person(nome,annoNascita,sposato));
 	}
 
 	public void remove(String nome, int annoNascita) {
-		this.set.remove(new Persona(nome,annoNascita,false));
+		this.set.remove(new Person(nome,annoNascita,false));
 	}
 
 	public int size() {
@@ -20,8 +20,8 @@ public class ArchiveImpl implements Archive {
 
 	public Set<String> allMarried() {
 		final Set<String> newset = new HashSet<>();
-		for (final Persona p: this.set) {
-			if (p.isSposato()) {
+		for (final Person p: this.set) {
+			if (p.isMarried()) {
 				newset.add(p.getName());
 			}
 		}

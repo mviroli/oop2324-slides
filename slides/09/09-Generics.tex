@@ -1,12 +1,12 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 
 \title[OOP09: Generici]{09 \\ Generici \\ (polimorfismo parametrico)}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p09generics}}
+\newcommand{\ecl}{\idepath{p09generics}}
 
 
 \frame[label=coverpage]{\titlepage}
@@ -59,7 +59,7 @@
     \item Contiene serie numeriche (vettori) di dimensione non nota a priori
     \item Ossia, a lunghezza variabile..
   }}
-  \fg{height=0.6\textheight}{09/img/uml-int-vector-abstracted.pdf}
+  \fg{height=0.6\textheight}{img/uml-int-vector-abstracted.pdf}
 }
 
 \fr{\Cil{UseIntVector}}{
@@ -71,7 +71,7 @@
     \item Contiene serie numeriche (vettori) di dimensione non nota a priori
     \item Realizzata componendo un array che viene espanso all'occorrenza
   }}
-  \fg{height=0.6\textheight}{09/img/uml-int-vector.pdf}
+  \fg{height=0.6\textheight}{img/uml-int-vector.pdf}
 }
 
 
@@ -98,7 +98,7 @@
 }
 
 \fr{Da \Cil{IntVector} a \Cil{ObjectVector}}{
-  \fg{height=0.6\textheight}{09/img/uml-obj-vector.pdf}
+  \fg{height=0.6\textheight}{img/uml-obj-vector.pdf}
 }
 
 \fr{\Cil{UseObjectVector}}{
@@ -132,7 +132,7 @@
 }
 
 %\fr{Il problema con le composizioni multiple}{
-%  \sizedcode{\ssmall}{09/code/LampsRow.java}
+%  \sizedcode{\ssmall}{code/LampsRow.java}
 %}
 
 
@@ -154,7 +154,7 @@
 \section{Classi generiche}
 
 \fr{La classe generica \Cil{List}}{
-  \sizedcode{\scriptsize}{09/code/List.java}
+  \sizedcode{\scriptsize}{code/List.java}
 }
 
 \fr{Uso di una classe generica}{
@@ -183,7 +183,7 @@
 
 
 \fr{La classe generica \Cil{Vector}}{
-  \sizedcode{\footnotesize}{09/code/Vector.java}
+  \sizedcode{\footnotesize}{code/Vector.java}
 }
 
 \fr{Uso di \Cil{Vector<X>}}{
@@ -191,11 +191,11 @@
 }
 
 \fr{Implementazione di \Cil{Vector} pt 1}{
-  \sizedcode{\scriptsize}{09/code/VectorA.java}
+  \sizedcode{\scriptsize}{code/VectorA.java}
 }
 
 \fr{Implementazione di \Cil{Vector} pt 2}{
-  \sizedcode{\scriptsize}{09/code/VectorB.java}
+  \sizedcode{\scriptsize}{code/VectorB.java}
 }
 
 
@@ -304,11 +304,11 @@
 }
 
 \fr{Esempio di metodo generico in classe generica}{
-  \sizedcode{\ssmall}{09/code/UseGenMeth.java}
+  \sizedcode{\ssmall}{code/UseGenMeth.java}
 }
 
 \fr{Notazione UML: non del tutto standard}{
-  \fg{height=0.8\textheight}{09/img/uml-generics.pdf}
+  \fg{height=0.8\textheight}{img/uml-generics.pdf}
 }
 
 \section{Java Wildcards}
@@ -331,8 +331,8 @@
 
 
 \fr{Java Wildcards}{
-  \sizedcode{\footnotesize}{09/code/Numbers.java}
-  \sizedcode{\footnotesize}{09/code/Wildcards.java}
+  \sizedcode{\footnotesize}{code/Numbers.java}
+  \sizedcode{\footnotesize}{code/Wildcards.java}
 }
 
 \fr{Java Wildcards}{

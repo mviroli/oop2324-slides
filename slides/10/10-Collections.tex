@@ -1,12 +1,12 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 
 \title[OOP10: Collezioni]{10 \\ Java Collections Framework}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p10collections}}
+\newcommand{\ecl}{\idepath{p10collections}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -44,11 +44,11 @@
 }
 
 \fr{JCF -- struttura complessiva}{
-  \fg{height=0.75\textheight}{10/img/tax1.png}
+  \fg{height=0.75\textheight}{img/tax1.png}
 }
 
 \fr{JCF -- struttura riorganizzata}{
-  \fg{height=0.75\textheight}{10/img/tax.png}
+  \fg{height=0.75\textheight}{img/tax.png}
 }
 
 
@@ -99,13 +99,13 @@
 }
 
 \fr{Interfacce per l'iterazione}{
-  \sizedcode{\scriptsize}{10/code/short/Iterable.java}
-  \sizedcode{\scriptsize}{10/code/short/Iterator.java}
-  \sizedcode{\scriptsize}{10/code/short/Collection-Short.java}
+  \sizedcode{\scriptsize}{code/short/Iterable.java}
+  \sizedcode{\scriptsize}{code/short/Iterator.java}
+  \sizedcode{\scriptsize}{code/short/Collection-Short.java}
 }
 
 \fr{Interfacce per l'iterazione -- UML}{
-  \fg{height=0.7\textheight}{10/img/uml-iter.pdf}
+  \fg{height=0.7\textheight}{img/uml-iter.pdf}
 }
 
 \fr{Esempio di iterable ad-hoc, e suo uso}{
@@ -118,7 +118,7 @@
 }
 
 %\fr{Soluzione alternativa per questo caso specifico}{
-%  \sizedcode{\ssmall}{10/code/iterator/AltRange.java}
+%  \sizedcode{\ssmall}{code/iterator/AltRange.java}
 %}
 
 \fr{Iteratori e collezioni: preview}{
@@ -150,7 +150,7 @@
 
 
 \fr{\Cil{Collection}}{
-  \sizedcode{\ssmall}{10/code/short/Collection.java}
+  \sizedcode{\ssmall}{code/short/Collection.java}
 }
 
 \fr{Usare le collezioni}{
@@ -180,12 +180,12 @@
 }
 
 \fr{\Cil{Set} e \Cil{List}}{
-  \sizedcode{\scriptsize}{10/code/short/List.java}
-  \sizedcode{\scriptsize}{10/code/short/Set.java}
+  \sizedcode{\scriptsize}{code/short/List.java}
+  \sizedcode{\scriptsize}{code/short/Set.java}
 }
 
 \fr{\Cil{ListIterator}}{
-  \sizedcode{\scriptsize}{10/code/short/ListIterator.java}
+  \sizedcode{\scriptsize}{code/short/ListIterator.java}
 }
 
 \fr{\Cil{UseListIterator}}{
@@ -193,7 +193,7 @@
 }
 
 \fr{Implementazione collezioni -- UML}{
-    \fg{height=0.75\textheight}{10/img/uml-abs.pdf}
+    \fg{height=0.75\textheight}{img/uml-abs.pdf}
 }
 
 \fr{Implementazione collezioni: linee guida generali}{
@@ -270,7 +270,7 @@
 }
 
 \fr{Costruttori di \Cil{HashSet}}{
-  \sizedcode{\scriptsize}{10/code/short/HashSet.java}
+  \sizedcode{\scriptsize}{code/short/HashSet.java}
 }
 
 \frs{5}{\Cil{equals()} e \Cil{hashCode()}}{
@@ -283,20 +283,20 @@
     \item oggetti \cil{equals} devono avere lo stesso \cil{hashCode}
     \item non è detto il viceversa, ma è opportuno per avere buone performance di \cil{HashSet}
     \item si veda ad esempio: {\tt\small http://en.wikipedia.org/wiki/Java\_hashCode()}
-    \item Eclipse fornisce la generazione di un \cil{hashCode} ragionevole (ce ne sono di migliori: \texttt{djb2}, \texttt{murmur3})
+    \item Eclipse/VSCode forniscono la generazione di un \cil{hashCode} (e \cil{hashCode}) ragionevoli (ce ne sono di migliori: \texttt{djb2}, \texttt{murmur3})
   }}
 }
 
-\fr{Esempio: \Cil{Persona} pt.1}{
-  \sizedrangedcode{\tiny}{3}{34}{\ecl/set/Persona.java}
+\fr{Esempio: \Cil{Person} pt.1}{
+  \sizedrangedcode{\scriptsize}{5}{28}{\ecl/set/Person.java}
 }
 
-\fr{Esempio: \Cil{Persona} pt.2}{
-  \sizedrangedcode{\ssmall}{35}{100}{\ecl/set/Persona.java}
+\fr{Esempio: \Cil{Person} pt.2}{
+  \sizedrangedcode{\scriptsize}{29}{100}{\ecl/set/Person.java}
 }
 
-\fr{\Cil{UseHashSetPersona}}{
-  \sizedrangedcode{\scriptsize}{5}{100}{\ecl/set/UseHashSetPersona.java}
+\fr{\Cil{UseHashSetPerson}}{
+  \sizedrangedcode{\scriptsize}{5}{100}{\ecl/set/UseHashSetPerson.java}
 }
 
 \fr{\Cil{TreeSet<E>}}{
@@ -319,9 +319,9 @@
 }
 
 \fr{Comparazione ``interna'' agli elementi}{
-  \sizedcode{\scriptsize}{10/code/short/Comparable.java}
-  \sizedcode{\scriptsize}{10/code/Wrappers.java}
-  \sizedcode{\scriptsize}{10/code/SortedPersona.java}
+  \sizedcode{\scriptsize}{code/short/Comparable.java}
+  \sizedcode{\scriptsize}{code/Wrappers.java}
+  \sizedcode{\scriptsize}{code/SortedPerson.java}
 }
 
 \fr{Esempi di comparazione interna}{
@@ -329,26 +329,26 @@
 }
 
 \fr{Interfacce \Cil{SortedSet} e \Cil{NavigableSet}}{
-  \sizedcode{\scriptsize}{10/code/short/SortedSet.java}
-  \sizedcode{\scriptsize}{10/code/short/NavigableSet.java}
+  \sizedcode{\scriptsize}{code/short/SortedSet.java}
+  \sizedcode{\scriptsize}{code/short/NavigableSet.java}
 }
 
 
-\fr{\Cil{UseTreeSetPersona}: comparazione interna}{
-  \sizedrangedcode{\ssmall}{5}{100}{\ecl/sortedset/UseTreeSetPersona.java}
+\fr{\Cil{UseTreeSetPerson}: comparazione interna}{
+  \sizedrangedcode{\ssmall}{5}{100}{\ecl/sortedset/UseTreeSetPerson.java}
 }
 
 \fr{Costruttori di \Cil{TreeSet}, e comparatore ``esterno''}{
-  \sizedcode{\scriptsize}{10/code/short/TreeSet.java}
-  \sizedcode{\scriptsize}{10/code/short/Comparator.java}
+  \sizedcode{\scriptsize}{code/short/TreeSet.java}
+  \sizedcode{\scriptsize}{code/short/Comparator.java}
 }
 
 \fr{Definizione di un comparatore esterno}{
-  \sizedrangedcode{\scriptsize}{3}{100}{\ecl/sortedset/PersonaComparator.java}
+  \sizedrangedcode{\scriptsize}{3}{100}{\ecl/sortedset/PersonComparator.java}
 }
 
-\fr{\Cil{UseTreeSetPersona2}: comparazione esterna}{
-  \sizedrangedcode{\ssmall}{3}{100}{\ecl/sortedset/UseTreeSetPersona2.java}
+\fr{\Cil{UseTreeSetPerson2}: comparazione esterna}{
+  \sizedrangedcode{\ssmall}{3}{100}{\ecl/sortedset/UseTreeSetPerson2.java}
 }
 
 \fr{Perché il tipo \Cil{Comparator<? super E>}}{
