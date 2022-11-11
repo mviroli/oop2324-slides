@@ -1,12 +1,12 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 
-\title[OOP14: I/O]{14 \\ Input-Output}
+\title[OOP16: I/O]{16 \\ Input-Output}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p14io}}
+\newcommand{\ecl}{\idepath{p16io}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -40,14 +40,14 @@
   \bl{La libreria \cil{java.io.*}}{\iz{
     \item Fornisce i concetti di File e Stream di dati
     \item Consente una gestione flessibile dei vari aspetti
-    \item È estesa con la libreria \cil{java.nio}, che vedremo poi
+    \item È estesa con alcune funzionalità nella libreria \cil{java.nio}, che vedremo poi
     \item È la base di librerie avanzate (networking,\dots), anche non-JDK (JSON,\dots)
     \item I/O con l'utente in ambiente a finestre è realizzato con le GUI
   }}
 }
 
 \fr{La libreria \Cil{java.io}}{
-    \fg{height=0.85\textheight}{14/img/io.png}
+    \fg{height=0.85\textheight}{img/io.png}
 }
 
 \fr{I macro-elementi della libreria}{
@@ -95,11 +95,11 @@
 
 
 \fr{Classe \Cil{java.io.File}: pt1}{
-    \sizedrangedcode{\ssmall}{1}{28}{14/short/File.java}
+    \sizedrangedcode{\ssmall}{1}{28}{short/File.java}
 }	
 
 \fr{Classe \Cil{java.io.File}: pt2}{
-    \sizedrangedcode{\ssmall}{30}{100}{14/short/File.java}
+    \sizedrangedcode{\ssmall}{30}{100}{short/File.java}
 }	
 
 \fr{\Cil{java.io.File} in azione (modella un path su File System)}{
@@ -109,14 +109,14 @@
 \begin{frame}[fragile]\frametitle{Esempio di output}
 \begin{lstlisting}[basicstyle=\ssmall\ttfamily]
 getName prova.bin
-getParent /home/mirko/aula/14
+getParent /home/mirko/aula/oop
 isAbsolute true
-getCanonicalPath /home/mirko/aula/14/prova.bin
-getPath /home/mirko/aula/14/prova.bin
-getParentFile /home/mirko/aula/14
-getAbsolutePath /home/mirko/aula/14/prova.bin
-getAbsoluteFile /home/mirko/aula/14/prova.bin
-getCanonicalFile /home/mirko/aula/14/prova.bin
+getCanonicalPath /home/mirko/aula/oop/prova.bin
+getPath /home/mirko/aula/oop/prova.bin
+getParentFile /home/mirko/aula/oop
+getAbsolutePath /home/mirko/aula/oop/prova.bin
+getAbsoluteFile /home/mirko/aula/oop/prova.bin
+getCanonicalFile /home/mirko/aula/oop/prova.bin
 canRead true
 canWrite true
 isDirectory false
@@ -169,11 +169,11 @@ getClass class java.io.File
 }
 
 \fr{La classe \Cil{java.io.InputStream}}{
-    \sizedcode{\scriptsize}{14/short/InputStream.java}
+    \sizedcode{\scriptsize}{short/InputStream.java}
 }	
 
 \fr{\Cil{FileInputStream} e \Cil{ByteArrayInputStream}}{
-    \fg{height=0.85\textheight}{14/img/bytefile.png}
+    \fg{height=0.85\textheight}{img/bytefile.png}
 }
 
 \fr{Uso di \Cil{ByteArrayInputStream}}{
@@ -204,7 +204,7 @@ getClass class java.io.File
 }	
 
 \fr{La classe \Cil{java.io.OutputStream}}{
-    \sizedcode{\scriptsize}{14/short/OutputStream.java}
+    \sizedcode{\scriptsize}{short/OutputStream.java}
     \bl{Stream di uscita -- Duale all'\cil{InputStream}}{\iz{
 	\item Esistono anche le analoghe specializzazioni \cil{ByteArrayOutputStream} e \cil{FileOutputStream}
     }}
@@ -240,19 +240,19 @@ getClass class java.io.File
 }
 
 \fr{Decorazione, in generale}{
-    \fg{height=0.85\textheight}{14/img/decorator.png}
+    \fg{height=0.85\textheight}{img/decorator.png}
 }
 
 \fr{Decorazione, il caso di \Cil{DataInputStream}}{
-    \fg{height=0.85\textheight}{14/img/dec.png}
+    \fg{height=0.85\textheight}{img/dec.png}
 }
 
 \fr{\Cil{DataInputStream}}{
-    \sizedrangedcode{\ssmall}{1}{100}{14/short/DataInputStream.java}
+    \sizedrangedcode{\ssmall}{1}{100}{short/DataInputStream.java}
 }
 
 \fr{\Cil{DataOutputStream}}{
-    \sizedrangedcode{\ssmall}{1}{100}{14/short/DataOutputStream.java}
+    \sizedrangedcode{\ssmall}{1}{100}{short/DataOutputStream.java}
 }
 
 \fr{\Cil{UseDataStream}}{
@@ -283,7 +283,7 @@ getClass class java.io.File
 
 
 \fr{Decorazione, una visione complessiva}{
-    \fg{height=0.85\textheight}{14/img/dec-all.png}
+    \fg{height=0.85\textheight}{img/dec-all.png}
 }
 
 \fr{Altri decoratori di \Cil{InputStream} (\dots e \Cil{OutputStream})}{
@@ -355,11 +355,11 @@ getClass class java.io.File
 }
 
 \fr{Diagramma UML con \Cil{ObjectInputStream}}{
-    \fg{height=0.85\textheight}{14/img/object.png}
+    \fg{height=0.85\textheight}{img/object.png}
 }
 
 \frs{5}{Classe \Cil{Person} e l'interfaccia ``tag'' \Cil{Serializable}}{
-    \sizedrangedcode{\ssmall}{3}{100}{\ecl/files/Persona.java}
+    \sizedrangedcode{\ssmall}{3}{100}{\ecl/files/Person.java}
     \bl{\cil{Serializable} -- implementata già da molte classi, non \cil{Object}}{\iz{
 	\item da implementare per avere oggetti ``automaticamente'' serializzabili
 	\item ciò non comporta alcun contratto da ottemperare
@@ -421,12 +421,12 @@ getClass class java.io.File
     }}
 }
 
-\fr{\Cil{CPersona} con caching \Cil{toString}, pt1}{
-    \sizedrangedcode{\ssmall}{3}{29}{\ecl/trans/CPersona.java}
+\fr{\Cil{CPerson} con caching \Cil{toString}, pt1}{
+    \sizedrangedcode{\ssmall}{3}{29}{\ecl/trans/CPerson.java}
 }
 
-\fr{\Cil{CPersona} con caching \Cil{toString}, pt2}{
-    \sizedrangedcode{\ssmall}{31}{100}{\ecl/trans/CPersona.java}
+\fr{\Cil{CPerson} con caching \Cil{toString}, pt2}{
+    \sizedrangedcode{\ssmall}{31}{100}{\ecl/trans/CPerson.java}
 }
 
 \fr{\Cil{UseTransient}}{
@@ -446,8 +446,8 @@ getClass class java.io.File
     }}
 }
 
-\fr{\Cil{APersona}: serializzazione ad-hoc per una data}{
-    \sizedrangedcode{\tiny}{6}{35}{\ecl/trans/APersona.java}
+\fr{\Cil{APerson}: serializzazione ad-hoc per una data}{
+    \sizedrangedcode{\tiny}{6}{35}{\ecl/trans/APerson.java}
 }
 
 
@@ -456,11 +456,11 @@ getClass class java.io.File
 }
 
 \fr{Serializzazione ad-hoc per \Cil{java.util.ArrayList}, pt1}{
-    \sizedrangedcode{\ssmall}{1}{23}{14/short/ArrayList.java}
+    \sizedrangedcode{\ssmall}{1}{23}{short/ArrayList.java}
 }
 
 \fr{Serializzazione ad-hoc per \Cil{java.util.ArrayList}, pt2}{
-    \sizedrangedcode{\ssmall}{25}{100}{14/short/ArrayList.java}
+    \sizedrangedcode{\ssmall}{25}{100}{short/ArrayList.java}
 }
 
 \fr{Note sulla serializzazione Java}{
@@ -505,7 +505,7 @@ getClass class java.io.File
 }
 
 \fr{Classe \Cil{RandomAccessFile}}{
-    \fg{height=0.85\textheight}{14/img/random.png}
+    \fg{height=0.85\textheight}{img/random.png}
 }
 
 \fr{\Cil{UseRandomAccessFile}}{
@@ -667,7 +667,7 @@ getClass class java.io.File
 }
 
 \fr{UML classi relative ai reader (writer analoghi)}{
-    \fg{height=0.85\textheight}{14/img/text.png}
+    \fg{height=0.85\textheight}{img/text.png}
 }
 
 \fr{Esempio: \Cil{UseReadersWriters}}{
