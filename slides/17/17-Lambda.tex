@@ -1,11 +1,11 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
-\title[OOP17: Java 8 lambda]{17 \\ Lambda expressions}
+\title[OOP17: Java 8+ lambda]{17 \\ Lambda expressions}
 
 \begin{document}
 
-\newcommand{\ecl}{\eclipsepath{p17lambda}}
+\newcommand{\ecl}{\idepath{p17lambda}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -25,12 +25,12 @@
 
 \frs{5}{Programmazione funzionale in Java}{
   \bl{Introdotta da Java 8 (2014)}{\iz{
-    \item Molte funzionalità rimandate da Java 7
+    \item Un significativo cambio di direzione nella OOP ``mainstream''
     \item Principale novità: lambda (ossia uno degli elementi fondamentali dello stile di programmazione funzionale)
     \item Le lambda portano ad uno stile più elegante e astratto di programmazione
     \item In Java, portano a codice più compatto e chiaro in certe situazioni
-    \item Impatta alcuni aspetti di linguaggio
-    \item Impatta varie librerie
+    \item Impatta alcuni aspetti di linguaggio, varie librerie
+    \item Può impattare significativamente il nostro ``stile'' di programmazione
   }}
   \bl{Risorse}{\iz{
     \item Libri: R.Warburton, Java 8 Lambdas
@@ -67,8 +67,8 @@
     \item ossia si può ``passare'' del ``codice''
   }}
   \bl{Caratteristica specifica di Java}{\iz{
-    \item come vedremo, una lambda è un oggetto, e il suo tipo è sempre quello di una \cil{interface} detta ``funzionale''
-    \item metodi statici o istanza possono essere usati a mo' di lambda (chiamati ``method reference'', perché sono interpretabili come funzioni (come i \texttt{delegate} di \texttt{C\#})
+    \item come vedremo, una lambda è un oggetto, ed è passabile là dove ci si aspetta una \cil{interface} detta ``funzionale''
+    \item metodi statici o istanza possono essere usati a mo' di lambda (chiamati ``method reference''), perché sono interpretabili come funzioni (come i \texttt{delegate} di \texttt{C\#})
   }}
   
 }
@@ -106,12 +106,13 @@
   \bl{Method reference:}{\iz{
     \item Corrisponde ad una lambda che di fatto è realizzata da un metodo
     \item Si può riferire un metodo statico o non, o un costruttore
-    \item Usabile ``naturalmente'' (e opzionalmente) quando la lambda non fa altro che chiamare un metodo usando ``banalmente'' i suoi input e restituendo il suo ``output''
+    \item Usabile ``naturalmente'' quando la lambda non fa altro che chiamare un metodo usando ``banalmente'' i suoi input e restituendo il suo ``output''
+    \item Usarli dove possibile!
   }}  
 }
 
 \fr{\Cil{Esempi di Method Reference (casi 1,2,3)}}{
-  \sizedrangedcode{\ssmall}{5}{100}{\ecl/first/AllLambdas2.java}      
+  \sizedrangedcode{\ssmall}{5}{100}{\ecl/first/MethodReferences.java}      
 }
 
 
@@ -126,7 +127,7 @@
   }}
   \bl{Motivazione:}{\iz{
     \item Di fatto, il compilatore traduce la lambda nella creazione di un oggetto di una classe anonima che implementa l'interfaccia funzionale
-    \item Uno specifico opcode a livello di bytecode evita di costruirsi effettivamente un \texttt{.class} per ogni lambda
+    \item Uno specifico opcode a livello di bytecode evita di costruirsi effettivamente un \texttt{.class} per ogni lambda, ma è solo una ottimizzazione interna
   }}  
 }
 
@@ -169,12 +170,11 @@
 
 \fr{Annotazione \Cil{@FunctionalInterface}}{
   \bl{Uso}{\iz{
-    \item da usare opzionalmente per interfacce funzionali
+    \item da usare (opzionalmente, ma consigliata!) per interfacce funzionali
     \item il compilatore la usa per assicurarsi che l'interfaccia sia funzionale, ossia che vi sia un solo metodo ``astratto''
+    \item per l'utilizzatore, lo si avverte che si possono usare delle lambda come ``implementazione''
     \item nella Java API viene usata spesso
   }}
-  \bl{Nota}{\iz{
-    \item le annotazioni sono usate per vari scopi, ad esempio per indicare al compilatore di fare ulteriori controlli   }}
 }
 
 \fr{Esempio \Cil{SimpleIterator}}{
@@ -187,11 +187,12 @@
     \bl{Perché scriversi una nuova interfaccia funzionale all'occorrenza?}{\iz{
       \item Lo si fa solo per rappresentare concetti specifici del dominio
       \item Lo si fa se ha metodi default aggiuntivi
+      \item Altrimenti, è bene usare interfacce di libreria ``note''
     }}
     \bl{In \cil{java.util.function} vengono fornite varie interfacce ``general purpose''}{\iz{
       \item Sono tutte funzionali
       \item Hanno metodi aggiuntivi default di cui non ci occupiamo
-      \item Hanno un metodo ``astratto'' chiamato, a seconda: \\ \cil{apply}, \cil{accept}, \cil{test} o \cil{get}
+      \item Hanno un metodo ``astratto'' chiamato, a seconda: \\ \cil{apply}, \cil{accept}, \cil{test} o \cil{get}; è quello da chiamare per applicare la funzione
     }}    
 }
 
@@ -244,8 +245,8 @@
 
 
 \frs{5}{Interfacce \Cil{Iterator} e \Cil{Iterable} complete}{
-    \sizedrangedcode{\tiny}{1}{100}{17/snippets/Iterable.java}
-    \sizedrangedcode{\tiny}{1}{100}{17/snippets/Iterator.java}
+    \sizedrangedcode{\tiny}{1}{100}{snippets/Iterable.java}
+    \sizedrangedcode{\tiny}{1}{100}{snippets/Iterator.java}
 }
 
 \fr{Uso delle ``nuove'' interfacce \Cil{Iterator} e \Cil{Iterable}}{
@@ -253,7 +254,7 @@
 }
 
 \fr{Interfaccia \Cil{java.util.Map} -- metodi aggiuntivi}{
-    \sizedrangedcode{\tiny}{1}{100}{17/snippets/Map.java}
+    \sizedrangedcode{\tiny}{1}{100}{snippets/Map.java}
 }
 
 \fr{Uso delle ``nuova'' interfacce \Cil{Map}}{
@@ -278,7 +279,7 @@
 }
 
 \fr{Classe \Cil{java.util.Optional}}{
-    \sizedrangedcode{\tiny}{1}{100}{17/snippets/Optional.java}
+    \sizedrangedcode{\tiny}{1}{100}{snippets/Optional.java}
 }
 
 \fr{\Cil{UseOptional}}{
@@ -316,6 +317,33 @@
 
 \fr{\Cil{UsePerson}}{
     \sizedrangedcode{\ssmall}{3}{100}{\ecl/optional/UsePerson.java}
+}
+
+\section{Switch expressions}
+
+\frs{5}{Switching}{
+    \bl{Istruzione \Cil{switch}}{\iz{
+        \item un classico costrutto di programmazione strutturata
+        \item corrisponde ad una cascata di \cil{if}, su condizioni di uguaglianza
+        \item selezionato un caso, l'esecuzione riparte da lì, quindi spesso si usa il \cil{break}
+        \item usata tipicamente su \cil{enum} o tipi numerici
+        \item su oggetti, usa \cil{equals}
+        \item il caso \cil{default} usabile come sorta di \cil{else}, opzionalmente
+    }}
+    \bl{Espressione \Cil{switch}}{\iz{
+        \item una variante dello \cil{switch} statement (come l'operatore ternario è variante dell'\cil{if})
+        \item sintassi ispirata alle lambda
+        \item ogni caso dello switch rappresenta di fatto un return;
+        \item permette di esprimere comodamente funzioni o espressioni per casi
+    }}
+}
+
+\fr{\Cil{switch} statememts}{
+    \sizedrangedcode{\tiny}{3}{100}{\ecl/switches/SwitchStatement.java}
+}
+
+\fr{\Cil{switch} expressions}{
+    \sizedrangedcode{\tiny}{6}{100}{\ecl/switches/SwitchExpression.java}
 }
 
 
