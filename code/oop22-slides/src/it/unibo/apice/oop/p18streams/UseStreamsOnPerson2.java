@@ -10,8 +10,8 @@ public class UseStreamsOnPerson2 {
 		
 		final List<Person> list = new ArrayList<>();
 		list.add(new Person("Mario","Cesena",20000,"Teacher"));
-		list.add(new Person("Rino","Forlì",50000,"Professor"));
-		list.add(new Person("Lino","Cesena",110000,"Professor","Dean","Secretary"));
+		list.add(new Person("Rino","Forlì",30000,"Football player"));
+		list.add(new Person("Lino","Cesena",110000,"Chef","Artist"));
 		list.add(new Person("Ugo","Cesena",20000,"Secretary"));
 		list.add(new Person("Marco",null,4000,"Contractor"));
 		
@@ -27,14 +27,14 @@ public class UseStreamsOnPerson2 {
 		// Average income of professors
 		final double avg = 
 				list.stream()
-				    .filter(p->p.getJobs().contains("Professor"))
+				    .filter(p->p.getJobs().contains("Chef"))
 					.mapToDouble(Person::getIncome)
 					.average().getAsDouble();
 		
 		System.out.println(avg);
 		System.out.println(
 				list.stream()
-				    .filter(p->p.getJobs().contains("Professor"))
+				    .filter(p->p.getJobs().contains("Chef"))
 				    .mapToDouble(Person::getIncome).average());
 	}
 }   

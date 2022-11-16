@@ -8,16 +8,16 @@ public class UseStreamsOnPerson {
 		
 		final List<Person> list = new ArrayList<>();
 		list.add(new Person("Mario","Cesena",20000,"Teacher"));
-		list.add(new Person("Rino","Forlì",50000,"Professor"));
-		list.add(new Person("Lino","Cesena",110000,"Professor","Dean"));
+		list.add(new Person("Rino","Forlì",30000,"Football player"));
+		list.add(new Person("Lino","Cesena",110000,"Chef","Artist"));
 		list.add(new Person("Ugo","Cesena",20000,"Secretary"));
 		list.add(new Person("Marco",null,4000,"Contractor"));
 		
 		final double result = list.stream()
-								  .filter(p->p.getCity().isPresent())  
-								  .filter(p->p.getCity().get().equals("Cesena"))
-								  .map(p->p.getIncome())
-								  .reduce((a, b)->a+b)
+								  .filter(p -> p.getCity().isPresent())  
+								  .filter(p -> p.getCity().get().equals("Cesena"))
+								  .map(p -> p.getIncome())
+								  .reduce((a, b) -> a + b)
 								  .get();
 	
 		System.out.println(result);

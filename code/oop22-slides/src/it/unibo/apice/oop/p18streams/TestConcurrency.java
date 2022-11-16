@@ -7,8 +7,8 @@ import static java.util.stream.Collectors.*;
 
 public class TestConcurrency {
 
-	private final static int DIM = 1000000;
-	private final static int STEPS = 1000;
+	private final static int DIM = 1_000_000; // 5.72 gain on me in 2022!!
+	private final static int STEPS = 1_000;
 
 	public static void main(String[] args) {
 		long time;

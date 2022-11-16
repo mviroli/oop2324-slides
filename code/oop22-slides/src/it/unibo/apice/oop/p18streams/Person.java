@@ -13,7 +13,7 @@ public class Person {
 		this.name = Objects.requireNonNull(name);
 		this.city = Optional.ofNullable(city); // null in ingresso indica città assente
 		this.income = income;
-		this.jobs = new HashSet<>(Arrays.asList(jobs)); // conversione a set
+		this.jobs = new HashSet<>(List.of(jobs)); // conversione a set
 	}
 
 	public String getName() {
@@ -33,40 +33,28 @@ public class Person {
 	}
 	//.. seguono hashCode, equals e toString
 	@Override
+	public String toString() {
+		return "PersonImpl [name=" + name + ", city=" + city + ", income=" + income
+				+ ", jobs=" + jobs + "]";
+	}
+
+	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((jobs == null) ? 0 : jobs.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(name, city, income, jobs);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (!(obj instanceof Person)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Person other = (Person) obj;
-		if (jobs == null) {
-			if (other.jobs != null)
-				return false;
-		} else if (!jobs.equals(other.jobs))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "PersonImpl [name=" + name + ", city=" + city + ", income=" + income
-				+ ", jobs=" + jobs + "]";
+		return Objects.equals(name, other.name) && Objects.equals(city, other.city)
+				&& Double.doubleToLongBits(income) == Double.doubleToLongBits(other.income)
+				&& Objects.equals(jobs, other.jobs);
 	}	
 	
 	
