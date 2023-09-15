@@ -7,37 +7,27 @@
 
 \frame[label=coverpage]{\titlepage}
 
-\frs{5}{Docenti}{
+\fr{Docenti}{
+\centering
   \bl{Titolare del corso: Prof. Mirko Viroli}{
     \iz{ 
       \item e-mail | \texttt{mirko.viroli@unibo.it}
       \item homepage | \texttt{https://www.unibo.it/sitoweb/mirko.viroli}
     }
   }
-  \bl{Modulo di laboratorio 1: Prof. Danilo Pianini}{
+  \bl{Modulo di laboratorio: Prof. Danilo Pianini}{
     \iz{ 
       \item e-mail | \texttt{danilo.pianini@unibo.it}
       \item homepage | \texttt{https://www.unibo.it/sitoweb/danilo.pianini}
     }
   }
-  \bl{Modulo di laboratorio 2: Prof. Roberto Casadei}{
-    \iz{ 
-      \item e-mail | \texttt{roby.casadei@unibo.it}
-      \item homepage | \texttt{https://www.unibo.it/sitoweb/roby.casadei}
-    }
-  }
-  
-  %\bl{Tutors: Ing. Simone Costanzi e Ing. Luca Tremamunno}{
-  %  \iz{ 
-  %    \item e-mails | \texttt{\{simone.costanzi2,lucaoop-.tremamunno\}@unibo.it}
-  %  }
-  %}
+  \bl{\dots e tutors in laboratorio}{\dots}
 }
 
 \fr{Contatti con gli studenti}{
   \bl{Chi contattare}{\iz{
-  \item Mirko Viroli: ``teoria'' + organizzazione del corso
-  \item Pianini/Casadei: ``pratica'' + laboratorio
+  \item Mirko Viroli: contenuti tecnici del corso + organizzazione del corso
+  \item Pianini: strumenti e esercizi di laboratorio
   }}
   \bl{Attraverso il forum}{\iz{ 
   \item Per domande la cui risposta è di interesse generale \\ (e quindi tutte le domande tecniche)
@@ -52,7 +42,7 @@
 
 \fr{Sito del corso}{
   \bl{Sito \alert{virtuale} di Ateneo}{\iz{
-  \item \myurl{https://virtuale.unibo.it/course/view.php?id=38482}
+  \item \myurl{https://virtuale.unibo.it/course/view.php?id=48035}
   \item sarà il luogo degli avvisi (e notifiche), forum di discussione, produzione di materiale
   \item tutti gli studenti che seguono il corso si iscrivano, e lo tengano d'occhio
   \item in particolare: avendo sempre le slide sottomano
@@ -83,22 +73,22 @@
   \item Librerie (I/O, grafica, concorrenza)
   \item Integrazione col paradigma funzionale (lambda, streams)
   \item Pattern e buone pratiche di programmazione
-  \item Elementi di programmazione C\#
+  %\item Elementi di programmazione C\#
 }}}
 
-\frs{5}{Testi di riferimento (non necessario l'acquisto)}{
+\fr{Testi di riferimento (non necessario l'acquisto)}{
   \bl{Programmazione in Java}{\iz{ 
   \item B.Eckel. Thinking in Java, 4th edition.
-  \item J.Block. Effective Java, 2nd edition.
+  \item J.Block. Effective Java, 3rd edition.
   \item R.Warburton. Java 8 Lambdas.
   }}
-  \bl{Programmazione in C\#}{\iz{ 
-  \item Jon Skeet. C\# in depth, 3rd edition.
-  }}
+  %\bl{Programmazione in C\#}{\iz{ 
+  %\item Jon Skeet. C\# in depth, 3rd edition.
+  %}}
   \bl{Altri riferimenti}{\iz{
   \item E.Gamma et.al. Design Patterns Elements of Reusable Object-Oriented Software.
   \item R.Martin. Clean Code: A Handbook of Agile Software Craftsmanship
-  \item Java e C\# online documentation (tutorials, Language Specification, APIs)
+  %\item Java e C\# online documentation (tutorials, Language Specification, APIs)
 } }}
 
 \frs{15}{Software}{
@@ -114,20 +104,20 @@
       \item Git
       \item Gradle
   }}}}
-  \bl{Altri framework -- parte finale del corso}{\iz{ 
-  \item Visual Studio .NET (Microsoft), oppure
-  \item framework Mono e IDE Monodevelop/Rider (Linux e MacOs)
-  }}  
+  %\bl{Altri framework -- parte finale del corso}{\iz{ 
+  %\item Visual Studio .NET (Microsoft), oppure
+  %\item framework Mono e IDE Monodevelop/Rider (Linux e MacOs)
+  %}}  
   \bl{Istruzioni sull'installazione (sul PC di casa)}{\iz{ 
   \item Già disponibili su ``virtuale''
-  \item \myurl{https://apice-at-disi.github.io/software-installation-instructions/}
+  \item \myurl{https://unibo-oop.github.io/software-installation/}
   \item Molto importante rendersi operativi a casa nel giro di una settimana!
   \item L'uso di VSCode sarà necessario solo fra 2/3 settimane
   \item[$\Rightarrow$] sarebbe consigliato l'uso del sistema operativo Linux
   }}
 }
 
-\fr{Sul ruolo di questo corso}{
+\fr{Sul ruolo di questo corso, a.k.a. ``Programmazione 2''}{
     \bl{Elementi essenziali}{\iz{
     \item Costruzione del software, e quindi di sistemi
     \item Analisi problemi, e organizzazione di soluzioni
@@ -153,13 +143,12 @@
   \item[$\Rightarrow$] Svolta in laboratorio
   }}
   \bl{Discussione progetto}{\iz{
-  \item Progetto sviluppato in gruppo, 70-80 ore a testa (vedi i 12 CFU)
+  \item Progetto sviluppato in gruppo, 70 ore circa a testa (vedi i 12 CFU)
   \item Concordato col docente prima di iniziare
   \item Da relazionare con qualità, poi discusso su appuntamento
-  \item Consegne con deadlina scelta da voi ma a quel punto stringente: \\ orientativamente, fine Febbraio, Aprile, Giugno, Agosto, Ottobre
-  \item In discussione si porta anche un micro-task C\# ($<$ 10 ore)
+  \item Consegne con deadlina scelta da voi (entro 4 mesi) ma a quel punto stringente: \\ non durante le lezioni, idealmente entro il 18/2/2024
   \item[$\Rightarrow$] I dettagli discussi a metà corso
-    \item[$\Rightarrow$] Regole d'esame già disponibili (in versione draft) sul ``virtuale''
+  \item[$\Rightarrow$] Regole d'esame (in versione draft) su ``virtuale'' molto presto
 
 }}
 }
