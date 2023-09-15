@@ -1,13 +1,13 @@
 \documentclass[presentation]{beamer}
-\usepackage{oop-slides}
+\usepackage{../oop-slides}
 
 \title[OOP20: OO Design and Patterns]{20 \\ Progettazione OO e pattern}
 
 \begin{document}
 
 
-\newcommand{\ecl}{\eclipsepath{p20patterns}}
-\newcommand{\ecllambda}{\eclipsepath{p17lambda}}
+\newcommand{\ecl}{\idepath{p20patterns}}
+\newcommand{\ecllambda}{\idepath{p17lambda}}
 
 \frame[label=coverpage]{\titlepage}
 
@@ -97,7 +97,7 @@
 
 
 \fr{Il caso di MVC -- schema generale (nomi di comodo)}{
-    \fg{height=0.55\textheight}{20/img/MVC-abstract.png}
+    \fg{height=0.55\textheight}{img/MVC-abstract.png}
 }
 
 \fr{Linee guida per un buon MVC pt.1}{
@@ -199,7 +199,7 @@
     }}
 }
 
-\frs{5}{Principi di qualità di programmi object-oriented}{
+\frs{5}{Principi di buona programmazione/progettazione OO}{
     \bl{DRY: Don't repeat yourself}{
         Never let two pieces of code be the same or even very similar in your code base
     }
@@ -209,11 +209,11 @@
     \bl{SRP: Single Responsibility Principle}{
         Each component (class) should have one reason to change
     }
-    \bl{OCP: Open-clodes principle}{
+    \bl{OCP: Open-closed principle}{
         Each component (class) should be closed to change but open to extension
     }
     \bl{DIP: Dependency-inversion principle}{
-        Do not depend on others' implementations, abstract them!
+        Do not depend on others' implementations, abstract them into interfaces!
     }
 }
 
@@ -238,7 +238,7 @@
 
 
 %\fr{Classificazione dei Pattern}{
-%    \fg{height=0.85\textheight}{20/img/classification.png}
+%    \fg{height=0.85\textheight}{img/classification.png}
 %}
 
 \fr{Classificazione dei Pattern: categorie}{
@@ -341,7 +341,7 @@
 
 
 \fr{Proxy: UML}{
-    \fg{height=0.5\textheight}{20/img/proxy.png}
+    \fg{height=0.5\textheight}{img/proxy.png}
 }
 
 \fr{Esempio: algoritmi come metodi statici}{
@@ -417,7 +417,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Singleton: UML}{
-    \fg{height=0.5\textheight}{20/img/singleton.jpg}
+    \fg{height=0.5\textheight}{img/singleton.jpg}
 }
 
 \fr{Singleton: Il caso di \Cil{java.lang.Runtime}}{
@@ -473,7 +473,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Template Method: UML}{
-    \fg{height=0.5\textheight}{20/img/template_method.jpg}
+    \fg{height=0.5\textheight}{img/template_method.jpg}
 }
 
 \fr{Template Method: Una estensione di \Cil{InputStream}}{
@@ -509,7 +509,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Strategy: UML}{
-    \fg{height=0.3\textheight}{20/img/strategy.jpg}
+    \fg{height=0.3\textheight}{img/strategy.jpg}
 }
 
 \fr{Strategy: Sorting con comparatori}{
@@ -561,7 +561,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Decorator: UML}{
-    \fg{height=0.4\textheight}{20/img/decorator.jpg}
+    \fg{height=0.4\textheight}{img/decorator.jpg}
 }
 
 \frs{10}{Esempio di problema}{
@@ -618,7 +618,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Iterator: UML}{
-    \fg{height=0.4\textheight}{20/img/iterator.png}
+    \fg{height=0.4\textheight}{img/iterator.png}
 }
 
 \fr{Observer: comportamentale, su oggetti}{
@@ -637,7 +637,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Observer: UML}{
-    \fg{height=0.5\textheight}{20/img/observer.jpg}
+    \fg{height=0.5\textheight}{img/observer.jpg}
 }
 
 \fr{Observer: Classi generiche per osservazioni}{
@@ -669,7 +669,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Adapter: UML}{
-    \fg{height=0.4\textheight}{20/img/adapter2.jpg}
+    \fg{height=0.4\textheight}{img/adapter2.jpg}
     \bl{Varianti}{\iz{
     \item In Java addirittura l'\cil{Adapter} può essere una inner class (istanza) per \cil{Adaptee}{\iz{
       \item E' considerato uno degli utilizzi più rilevanti per le inner class (istanza)
@@ -716,8 +716,8 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Static e Simple Factory}{
-  \fg{width=0.8\textheight}{20/img/fac1.png}
-  \fg{height=0.6\textheight}{20/img/fac2.png}
+  \fg{width=0.8\textheight}{img/fac1.png}
+  \fg{height=0.6\textheight}{img/fac2.png}
 }
 
 \fr{Static Factory: Esempio \Cil{Persona}}{
@@ -726,8 +726,8 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 
 
 \fr{Factory Method e Abstract Factory}{
-  \fg{width=0.8\textheight}{20/img/fac3.png}
-  \fg{width=0.8\textheight}{20/img/fac4.png}
+  \fg{width=0.8\textheight}{img/fac3.png}
+  \fg{width=0.8\textheight}{img/fac4.png}
 }
 
 
@@ -746,7 +746,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Factory Method: UML}{
-    \fg{height=0.45\textheight}{20/img/factorymethod.png}
+    \fg{height=0.45\textheight}{img/factorymethod.png}
 }
 
 \fr{Factory Method: Esempio \Cil{Persona} e \Cil{FactoryPersona}}{
@@ -808,7 +808,7 @@ La gestione del caching è incastrata insieme a quella degli algoritmi, ed è st
 }
 
 \fr{Builder: UML}{
-    \fg{height=0.45\textheight}{20/img/builder.png}
+    \fg{height=0.45\textheight}{img/builder.png}
 }
 
 

@@ -24,7 +24,7 @@
     \item Assomiglia molto al concetto di Iteratore, ma lo Stream è dichiarativo, perché non indica passo-passo come l'informazione viene processata, e quindi è concettualmente più astratto
     \item Ove possibile, uno Stream manipola i suoi elementi in modo ``lazy'' (ritardato): i dati vengono processati mano a mano che servono, non sono memorizzati tutti assieme come nelle Collection
     \item È possibile creare ``catene'' di trasformazioni di Stream (implementate con decorazioni successive) in modo funzionale, per ottenere flessibilmente computazioni non banali dei loro elementi, con codice più compatto e leggibile
-    \item Questa modalità di lavoro rende moslte computazioni (automaticamente) parallelizzabili, ossia computabili da un set arbitrario di Thread
+    \item Questa modalità di lavoro rende molte computazioni (automaticamente) parallelizzabili, ossia computabili da un set arbitrario di Thread
   }}
 }
 
@@ -34,14 +34,14 @@
       \item Una Collection/array, un dispositivo di I/O, una funzione generatrice
     }}
     \item Una sequenza di trasformazioni:{\iz{
-      \item mappe e filtri, ma non solo..
+      \item mappe e filtri, ma non solo\dots
     }}
     \item Un terminatore, che aggrega i dati dello Stream:{\iz{
       \item una riduzione ad un valore, una Collection/array, un Iteratore
     }}
   }}
   \bl{Esempio: con persone con nome, città e reddito}{\iz{
-    \item Data una \cil{List<Persona>} con proprietà reddito e città, ottenere la somma dei redditi di tutte le persone di Cesena
+    \item Data una \cil{List<Person>} con proprietà reddito e città, ottenere la somma dei redditi di tutte le persone di Cesena
     \item Come lo realizziamo tramite una pipeline?{\iz{
       \item Sorgente: la lista
       \item Trasformazione 1: filtro sulle persone di Cesena
@@ -53,12 +53,12 @@
 }
 
 \fr{Classe \Cil{Person} -- \Cil{equals}, \Cil{hashCode} e \Cil{toString} omessi}{
-    \sizedrangedcodet{\tiny}{5}{34}{\ecl/Person.java}
+    \sizedrangedcode{\tiny}{5}{34}{\ecl/Person.java}
 }
 
 
 \fr{Realizzazione dell'esempio in Java 8}{
-    \sizedrangedcodet{\tiny}{5}{100}{\ecl/UseStreamsOnPerson.java}
+    \sizedrangedcode{\tiny}{5}{100}{\ecl/UseStreamsOnPerson.java}
 }
 
 \fr{La libreria degli Stream}{
@@ -68,9 +68,9 @@
     \item Interfaccia \cil{BaseStream<X,B>}: sopra-interfaccia di \cil{Stream} con i metodi base
     \item Interfaccia \cil{DoubleStream}: stream di \cil{double}, con metodi base e specifici
     \item Interfacce \cil{IntStream}, \cil{LongStream}: simili
-    \item Interfaccia \cil{Collector<T,A,R>}: rappresenta una operazione di riduzione
+    \item Interfaccia \cil{Collector<T,A,R>}: rappresenta una operazione di rid uzione
     \item Classe \cil{Collectors}: fornisce una serie di collettori
-    \item ..altre classi di Java creano degli stream
+    \item \dots altre classi di Java creano degli stream
   }}
 }
 
@@ -87,10 +87,10 @@
       \item \cil{empty}, \cil{of}, \cil{iterate}, \cil{generate}, \cil{concat}
     }}
     \bl{Trasformazione}{\iz{
-      \item \cil{filter}, \cil{map}, \cil{flatMap}, \cil{distinct}, \cil{sorted}, \cil{peek}, \cil{limit}, \cil{skip}, \cil{mapToXYZ},..
+      \item \cil{filter}, \cil{map}, \cil{flatMap}, \cil{distinct}, \cil{sorted}, \cil{peek}, \cil{limit}, \cil{skip}, \cil{mapToXYZ},\dots
     }}
     \bl{Terminazione}{\iz{
-      \item \cil{forEach}, \cil{forEachOrdered}, \cil{toArray}, \cil{reduce}, \cil{collect}, \cil{min}, \cil{max}, \cil{count}, \cil{anyMatch}, \cil{allMatch}, \cil{noneMatch}, \cil{findFirst}, \cil{findAny},..
+      \item \cil{forEach}, \cil{forEachOrdered}, \cil{toArray}, \cil{reduce}, \cil{collect}, \cil{min}, \cil{max}, \cil{count}, \cil{anyMatch}, \cil{allMatch}, \cil{noneMatch}, \cil{findFirst}, \cil{findAny},\dots
     }}
     \bl{Una nota sulle classi \cil{DoubleStream} e simili}{\iz{
       \item sono più specializzate e performanti, non avendo il boxing
@@ -137,11 +137,11 @@
 }
 
 \fr{Terminazione generalizzata con \Cil{Stream.collect}}{
-    \sizedrangedcodet{\tiny}{6}{100}{\ecl/UseGeneralizedCollectors.java}
+    \sizedrangedcode{\tiny}{6}{100}{\ecl/UseGeneralizedCollectors.java}
 }
 
 \fr{Collettori di libreria: la classe \Cil{Collectors}}{
-    \sizedrangedcodet{\tiny}{1}{100}{../17/snippets/Collectors.java}
+    \sizedrangedcode{\tiny}{1}{100}{../17/snippets/Collectors.java}
 }
 
 \fr{\Cil{UseCollectors}: collettori di base}{
@@ -153,11 +153,11 @@
 }
 
 \fr{Esempi avanzati su \Cil{Person}}{
-    \sizedrangedcodet{\tiny}{7}{100}{\ecl/UseStreamsOnPerson2.java}
+    \sizedrangedcode{\tiny}{6}{100}{\ecl/UseStreamsOnPerson2.java}
 }
 
   \fr{Algoritmi funzionali -- cosa realizzano?}{
-    \sizedrangedcodet{\tiny}{7}{100}{\ecl/UseStreamsForAlgorithms.java}
+    \sizedrangedcode{\tiny}{7}{100}{\ecl/UseStreamsForAlgorithms.java}
 }
 
 \section{Implementazione Stream e Concorrenza}
@@ -166,7 +166,7 @@
   \bl{Uno dei vantaggi degli stream}{\iz{
     \item È possibile gestire in modo completamente automatico il parallelismo, e quindi la disponibilità di più core
     \item Alcuni stream (ossia non tutti) ammettono implementazioni multi-threaded efficienti{\iz{
-      \item \cil{range}, collezioni.. ma non \cil{iterate}
+      \item \cil{range}, collezioni\dots ma non \cil{iterate}
     }}
     \item Gli effettivi vantaggi (o addirittura penalizzazioni!) dipendono da molti fattori{\iz{
       \item Implementazione corrente dell'API, tipo di stream, tipi di computazioni
@@ -174,16 +174,16 @@
     }}
   }}
   \bl{Come si abilita il parallelismo (ove possibile)?}{\iz{
-    \item Basta richiamare il metodo \cil{parallel()} su uno stream..
-    \item ..o il metodo \cil{parallelStream()} da una collection
+    \item Basta richiamare il metodo \cil{parallel()} su uno stream\dots
+    \item \dots o il metodo \cil{parallelStream()} da una collection
   }}
 }
 
 \fr{Test concurrency}{
-    \sizedrangedcodet{\ssmall}{8}{100}{\ecl/TestConcurrency.java}
+    \sizedrangedcode{\ssmall}{8}{100}{\ecl/TestConcurrency.java}
 }
 
-\fr{Considerazioni sul guadagno di performance -- dati molto variabili..}{
+\fr{Considerazioni sul guadagno di performance -- dati molto variabili\dots}{
   \bl{Nel caso specifico (PC 6 cores), esecuzione ripetuta $1'000$ volte}{\iz{
     \item Con $10'000$ elementi nella collection, rapporto circa $0.9$ (più lento)
     \item Con $100'000$ elementi nella collection, rapporto circa $3.7$ 

@@ -14,22 +14,20 @@ public class TestConcurrency {
 		long time;
 		long time2;
 		final List<Double> l = IntStream.range(0, DIM)
-								  .mapToObj(x -> Math.random())
-								  .collect(toList());
-		
+				.mapToObj(x -> Math.random())
+				.collect(toList());
+
 		time = System.currentTimeMillis();
-		IntStream.range(0,STEPS).forEach(i -> 
-			l.stream().collect(Collectors.averagingDouble(x->x))
-		);
+		IntStream.range(0, STEPS).forEach(
+				i -> l.stream().collect(Collectors.averagingDouble(x -> x)));
 		time = System.currentTimeMillis() - time;
 		System.out.println("Time: " + time);
-		
+
 		time2 = System.currentTimeMillis();
-		IntStream.range(0,STEPS).forEach(i -> 
-			l.stream().parallel().collect(Collectors.averagingDouble(x->x))
-		);
+		IntStream.range(0, STEPS).forEach(
+				i -> l.stream().parallel().collect(Collectors.averagingDouble(x -> x)));
 		time2 = System.currentTimeMillis() - time2;
 		System.out.println("Time2: " + time2);
-		System.out.println("Gain: " + (((double)time)/time2));
+		System.out.println("Gain: " + (((double) time) / time2));
 	}
 }
