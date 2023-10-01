@@ -153,7 +153,7 @@
   \srcode{\scriptsize}{3}{100}{\ecl/TryChars.java}
 }
 
-\section{Java arrays}
+\section{Array in Java}
 
 \fr{Java array}{
   \bl{Caratteristiche generali}{\iz{
@@ -163,8 +163,8 @@
   }}
   \bl{Principale differenza rispetto al C}{\iz{
   \item Un array ha una lunghezza esplicita e accessibile (non modificabile)
-  \item È impossibile violare i limiti di una array, pena un errore a tempo di esecuzione (\cil{ArryIndexOutOfBoundsException})
-  \item L'accesso ad un array è di conseguenza leggermente rallentato, in linea di principio, rispetto al caso del C
+  \item È impossibile violare i limiti di una array, pena un errore a tempo di esecuzione (\cil{ArrayIndexOutOfBoundsException})
+  \item L'accesso ad un array è di conseguenza leggermente rallentato, almeno in linea di principio, rispetto al caso del C
   }}
 }
 
@@ -203,7 +203,7 @@
   \item Per dimensione{\iz{
   \item \cil{Object[] ar2 = new Object[200];}
   \item in ogni posizione c'è \cil{null}
-  \item frequente errore dello studente è pensare che sia un array di nuovi oggetti automaticamente creati
+  \item frequente errore è pensare che sia un array di nuovi oggetti automaticamente creati
   \item ricorda: è una sola \cil{new} quindi si crea un solo oggetto, l'array stesso
   }}
   \item l'accesso segue una simile sintassi
@@ -324,7 +324,7 @@
   \srcode{\scriptsize}{3}{100}{\ecl/GuessMyNumberApp.java}
 }
 
-\section{Un addendum: sula qualità del software\dots}
+\section{Un addendum: sulla qualità del software\dots}
 
 \fr{Come è fatto del ``buon software''?}{
   \bl{Qualità esterna -- aspetti funzionali}{\iz{

@@ -44,10 +44,10 @@
 
 \fr{Composizione -- relazione ``has-a''}{
   \bl{Idea}{\iz{
-    \item un oggetto della classe \cil{A} è ottenuto componendo un insieme di altri oggetti, delle classi \cil{B1}, \cil{B2},..,\cil{Bn} 
-    \item si dice che un oggetto di \cil{A} contiene, o si compone di, oggetti delle classi \cil{B1}, \cil{B2},..,\cil{Bn}
-    \item ossia, lo stato dell'oggetto di \cil{A} include le informazioni relative allo stato di un oggetto di \cil{B1}, uno di  \cil{B2},..,uno di \cil{Bn}
-    \item si noti che si parla propriamente di composizione quando \cil{B1}, \cil{B2},..\cil{Bn} non sono tipi primitivi, ma classi
+    \item un oggetto della classe \cil{A} è ottenuto componendo un insieme di altri oggetti, delle classi \cil{B1}, \cil{B2}, \dots, \cil{Bn} 
+    \item si dice che un oggetto di \cil{A} contiene, o si compone di, oggetti delle classi \cil{B1}, \cil{B2}, \dots, \cil{Bn}
+    \item ossia, lo stato dell'oggetto di \cil{A} include le informazioni relative allo stato di un oggetto di \cil{B1}, uno di  \cil{B2}, \dots, uno di \cil{Bn}
+    \item si noti che si parla propriamente di composizione quando \cil{B1}, \cil{B2}, \dots, \cil{Bn} non sono tipi primitivi, ma classi
     \item (quando gli oggetti composti hanno vita propria senza l'esistenza di \cil{A} si parla anche di \alert{aggregazione} -- ma non ci occuperemo per ora in dettaglio di questa distinzione)
   }}
 }
@@ -127,7 +127,7 @@
 }
 
 \fr{Class Diagram}{
-  \bl{..diagramma delle classi, una prima descrizione}{\iz{
+  \bl{\dots diagramma delle classi, una prima descrizione}{\iz{
     \item Un box rettangolare per classe, diviso in tre aree:{\iz{
       \item 1. nome della classe, 2. campi, 3. metodi (e costruttori)
     }}
@@ -181,10 +181,10 @@
   \bl{Specifica}{\iz{
     \item Serve un meccanismo per separare esplicitamente, ossia in dichiarazioni diverse, l'interfaccia della classe e la sua realizzazione
     \item Questo consente di tenere separate fisicamente la parte di ``contratto'' (tipicamente fissa) con quella di ``implementazione'' (modificabile frequentemente)
-    \item Consente di separare bene il progetto dall'implementazione
+    \item Consente di separare bene ``abstraction'' e ``concretion''
   }}
   \bl{Polimorfismo}{\iz{
-    \item Serve un meccanismo per poter fornire diverse possibili realizzazioni di un contratto
+    \item Serve un meccanismo per poter fornire diverse possibili realizzazioni di un contratto (o sue versioni implementative successive)
     \item Tutte devono poter essere utilizzabili in modo omogeneo
     \item Nel caso di \cil{DomusController}:{\iz{
 	\item Avere un unico contratto per i ``dispositivi'', e..

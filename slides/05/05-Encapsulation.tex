@@ -100,16 +100,16 @@
 \fr{Convenzioni sulla formattazione, pt 2}{
   \bl{Costrutti vari}{\iz{
     \item Apertura graffa: a fine linea della dichiarazione
-    \item Chiusura graffa: in linea a sè, dove inizia la linea che la apre
-    \item Metodi/costruttori separati da una linea vuota (poche separazioni altrimenti)
+    \item Chiusura graffa: in linea a sé, dove inizia la linea che la apre
+    \item Metodi/costruttori separati da una linea vuota \\ (pochissime altre separazioni altrimenti)
     \item Usare graffe anche con blocchi ad uno statement
     \item Non usare assegnamenti dentro a espressioni
-    \item Disambiguare priorità non banali fra operatori, con parentesi
+    \item Disambiguare priorità con parentesi solo in casi non banali
   }}
  \bl{Nomi}{\iz{
     \item Classi (e interface): iniziano con maiuscola
     \item Metodi, campi, variabili: iniziano con minuscola
-    \item Se nome strutturato usare ``camelCasing''
+    \item Se nome strutturato usare ``camelCase''/``PascalCase''
     \item Campi costanti: tutte maiuscole con eventuale separatore ``\textunderscore''
   }}
 }
@@ -123,7 +123,7 @@
   }}
   \bl{Nota finale}{\iz{
     \item L'uso delle corrette convenzioni rende il codice molto più leggibile, ma anche a volte meno conciso
-    \item Nelle slide è impossibile mostrarlo sempre in questo modo
+    \item Nelle slide è mostrato in questo modo salvo per necessità di spazio (generalmente segnalate)
     %\item Quindi talvolta alcune convenzioni non verranno usate nel
   }}
 }
@@ -160,7 +160,14 @@
       \item meno interazione con altri
       \item \alert{meno influenze negative nel caso di modifiche}
     }}
+    \item nello specifico:{\en{
+        \item ridurre le dipendenze
+        \item favorire dipendenze intra-componenti rispetto a quelle inter-componente
+        \item favorire dipendenze in componenti più innestati
+    }}
   }}
+  
+  
 }
 
 \fr{Modularità: quale situazione la preferibile?}{
@@ -236,7 +243,7 @@
   \bl{Altra possibilità}{\iz{
     \item Passo il contatore alle funzioni che hanno bisogno di conteggi
     \item Ciò consente un più ampio grado di riuso
-    \item In generale, sisono aperte nuove possibilità di riuso
+    \item In generale, si sono aperte nuove possibilità di riuso
   }}
   \srcode{\scriptsize}{16}{30}{\ecl/UseCounter2.java}
 }
