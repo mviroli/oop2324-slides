@@ -1,11 +1,11 @@
 package it.unibo.apice.oop.p07inheritance.ered;
 
-/* Si noti la clausola extends */
+/* Si noti la clausola extends, per estendere una classe */
 public class MultiCounter extends Counter {
 
     /*
      * I costruttori vanno ridefiniti. Devono tuttavia richiamare 
-     * quelli ereditati dalla sopraclasse
+     * con super(...) quelli ereditati dalla sopraclasse
      */
     public MultiCounter(int initialValue) {
     	super(initialValue);

@@ -24,32 +24,22 @@
   }}
 }
 
-\section{Riuso via ereditarietà}
-
-\frs{5}{Ereditarietà}{
-  \bx{
-    \`E un meccanismo che consente di definire una nuova classe \alert{specializzandone} una esistente, ossia ``ereditando'' i suoi campi e metodi (quelli privati non sono visibili), possibilmente/eventualmente modificando/aggiungendo campi/metodi, e quindi riusando codice già scritto e testato.
-  }
-  \bl{L'ereditarietà è un concetto chiave dell'OO}{\iz{
-    \item \`E connesso al meccanismo delle interfacce 
-    \item \`E uno degli elementi chiave insieme a incapsulamento e interfacce
-    \item Non riguarda solo il riuso di codice, ma influenza anche il polimorfismo conseguente
-  }}
-  \bl{Solito approccio}{\iz{
-    \item Illustreremo i meccanismi base attraverso semplici classi
-    \item Successivamente recupereremo l'importanza nei casi reali
-    \item Utilizzeremo l'idea di \alert{contatore}
-  }}
-}
-
-\fr{Scenari di riuso ed estensione}{
+\fr{Scenari di riuso (estensione, sostituibilità)}{
   \bx{\iz{
-    \item Data una classe, realizzarne un'altra con caratteristiche solo in parte diverse (o nuove)
-    \item Come sopra, ma senza disporre dei sorgenti della classe originaria (p.e., la classe di partenza è di libreria)
-    \item Data una classe, crearne una più specializzata (ad esempio, più robusta e sicura anche se meno prestante, o viceversa, più prestante)
-    \item Creare gerarchie di classi ossia di comportamenti
+    \item Data una classe, realizzarne un'altra con caratteristiche solo in parte diverse (o nuove){\iz{
+    \item avendo o non avendo a disposizione i sorgenti della classe originaria
+    \item per crearne una specializzazione (ad esempio, una versione più robusta, o più prestante, o con più funzionalità)
+    }}
+    \item La nuova classe potrebbe dover essere sostituibile alla precedente{\iz{
+        \item fino a formare vere e proprie gerarchie ``is-a''
+        \item ad esempio, data la classe \cil{Vehicle}, potrei poi creare le classi \cil{Car}, \cil{Truck}, \cil{Boat}
+    }}
   }}
 }
+
+
+\section{Riuso via composizione}
+
 
 \fr{Esempio base: \Cil{Counter}}{
   %\sizedcode{\normalsize}{code/pre/Counter.java}
@@ -71,6 +61,54 @@
 \fr{Versione con riuso via composizione: \Cil{MultiCounter2}}{
   \srcode{\scriptsize}{3}{32}{\ecl/pre/MultiCounter2.java}
 }
+
+\fr{Riuso via composizione}{
+  \bl{Uso di composizione/delegazione}{\iz{
+    \item si incapsula un oggetto della classe da modificare/estendere
+    \item si forniscono i metodi necessari, che posson essere più o meno
+    \item alcuni di questi delegano il lavoro all'oggetto incapsulato
+  }}
+  \bl{Analisi del meccanismo}{\iz{
+    \item nella programmazione moderna è considerata una \alert{ottima} soluzione
+    \item possibile limite: esplicitare le delegazione vìola un poco DRY
+    \item si può/deve usare in combinazione con le interfacce per gestire sostituibilità
+  }}
+  \bl{Possibile design}{\iz{
+    \item interfaccia \cil{Counter}, implementazione \cil{CounterImpl}, e poi \cil{MultiCounterImpl} che implementa \cil{Counter} e si compone di un \cil{CounterImpl}
+  }}
+}
+
+\fr{Interfaccia \Cil{Counter} e classe \Cil{UseMultiCounter}}{
+  \srcode{\scriptsize}{3}{32}{\ecl/composition/Counter.java}
+  \srcode{\scriptsize}{3}{32}{\ecl/composition/UseMultiCounter.java}
+}
+
+\fr{Classe \Cil{CounterImpl}}{
+  \srcode{\footnotesize}{3}{32}{\ecl/composition/CounterImpl.java}
+}
+
+\fr{Classe \Cil{MultiCounterImpl}}{
+  \srcode{\scriptsize}{3}{32}{\ecl/composition/MultiCounterImpl.java}
+}
+
+\section{Riuso via ereditarietà}
+
+\frs{5}{Ereditarietà}{
+  \bx{
+    \`E un meccanismo che consente di definire una nuova classe \alert{specializzandone} una esistente, ossia ``ereditando'' i suoi campi e metodi (quelli privati non sono visibili), possibilmente/eventualmente modificando/aggiungendo campi/metodi, e quindi riusando codice già scritto e testato.
+  }
+  \bl{L'ereditarietà è un concetto chiave dell'OO}{\iz{
+    \item È connesso al meccanismo delle interfacce
+    \item È uno degli elementi chiave insieme a incapsulamento e interfacce
+    \item Non riguarda solo il riuso di codice, ma influenza anche il polimorfismo conseguente, che è simile a quello delle interfacce e che descriveremo in dettaglio
+  }}
+  \bl{Solito approccio}{\iz{
+    \item Illustreremo i meccanismi base attraverso semplici classi
+    \item Successivamente recupereremo l'importanza nei casi reali
+    \item Utilizzeremo l'idea di \alert{contatore}
+  }}
+}
+
 
 \frs{15}{La necessità di estendere e modificare codice}{
   \bl{Una tipica situazione}{\iz{
@@ -115,7 +153,7 @@
 
 \fr{Notazione UML per l'estensione}{
   \bx{\iz{
-    \item Arco a linea continua (punta a triangolo pieno) per la relazione ``\cil{extends}''
+    \item Arco a linea continua (punta a triangolo vuoto) per la relazione ``\cil{extends}''
     \item Archi raggruppati per migliorare la resa grafica
   }}
   \fg{width=0.45\textwidth}{img/uml-ext.pdf}
@@ -135,7 +173,7 @@
   \bl{A cosa serve?}{\iz{
     \item Consente alle sottoclassi di accedere ad informazioni della sopraclasse che non si vogliono far vedere agli utilizzatori	
     \item Molto spesso usato a posteriori rimpiazzando un \cil{private}
-    %\item Molto meglio avere campi privati e getter/setter protetti
+    \item Preferibile avere campi privati e getter/setter protetti
   }}
   \bl{Esempio classe \cil{BiCounter} -- contatore bidirezionale}{\iz{
     \item Un contatore con anche il metodo \cil{decrement}
