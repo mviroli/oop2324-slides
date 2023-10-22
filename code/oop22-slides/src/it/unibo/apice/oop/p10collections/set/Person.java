@@ -30,12 +30,10 @@ public class Person {
 		return this.name + ":" + this.year + ": marr-" + this.married;
 	}
 
-	@Override
 	public int hashCode() {
 		return Objects.hash(name, year);
 	}
 
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

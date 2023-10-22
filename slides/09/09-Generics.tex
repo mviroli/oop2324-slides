@@ -46,6 +46,7 @@
   \bl{Astrazioni uniformi per problemi ricorrenti}{\iz{
     \item Durante lo sviluppo di vari sistemi si incontrano problemi ricorrenti che possono trovare una soluzione comune
     \item In alcuni casi queste soluzioni sono fattorizzabili (per astrazione) in una singola classe altamente riusabile
+    \item Esempi: collezioni, stream, funzioni, produttori, consumatori, predicati
   }}
   \bl{Un caso fondamentale: le \alert{collection}}{\iz{
     \item Una collection è un oggetto il cui compito è quello di immagazzinare il riferimento ad un numero (tipicamente non precisato) di altri oggetti 
@@ -138,8 +139,8 @@
 
 \fr{Polimorfismo parametrico}{
   \bl{Idea di base}{\iz{
-    \item Dato un frammento di codice \cil{F} che lavora su un certo tipo, diciamo \cil{String}, se potrebbe anche lavorare in modo uniforme con altri..
-    \item ..lo si rende parametrico, sostituendo a \cil{String} una sorta di variabile \cil{X} (chiamata \alert{type-variable}, ossia una variabile che contiene un tipo)
+    \item Dato un frammento di codice \cil{F} che lavora su un certo tipo, diciamo \cil{String}, se potrebbe anche lavorare in modo uniforme con altri\dots
+    \item \dots lo si rende parametrico, sostituendo a \cil{String} una sorta di variabile \cil{X} (chiamata \alert{type-variable}, ossia una variabile che contiene un tipo)
     \item A questo punto, quando serve il frammento di codice istanziato sulle stringhe, si usa \cil{F<String>}, ossia si richiede che \cil{X} diventi \cil{String}
     \item Quando serve il frammento di codice istanziato sugli integer, si usa \cil{F<Integer>}
   }}

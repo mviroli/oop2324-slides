@@ -24,18 +24,20 @@
   }}
 }
 
-\fr{Scenari di riuso (estensione, sostituibilità)}{
-  \bx{\iz{
+\fr{Alcuni scenari di riuso per le classi}{
+  \bl{Riuso con estensione e/o sostituibilità}{\iz{
     \item Data una classe, realizzarne un'altra con caratteristiche solo in parte diverse (o nuove){\iz{
     \item avendo o non avendo a disposizione i sorgenti della classe originaria
     \item per crearne una specializzazione (ad esempio, una versione più robusta, o più prestante, o con più funzionalità)
     }}
+    \item \dots ovviamente, senza violare il principio DRY
     \item La nuova classe potrebbe dover essere sostituibile alla precedente{\iz{
         \item fino a formare vere e proprie gerarchie ``is-a''
-        \item ad esempio, data la classe \cil{Vehicle}, potrei poi creare le classi \cil{Car}, \cil{Truck}, \cil{Boat}
+        \item ad esempio, data la classe \cil{Vehicle}, potrei poi creare le classi \cil{Car}, \cil{Truck}, \cil{Boat}, che sono tra loro abbastanza simili
     }}
   }}
 }
+
 
 
 \section{Riuso via composizione}
@@ -73,13 +75,13 @@
     \item possibile limite: esplicitare le delegazione vìola un poco DRY
     \item si può/deve usare in combinazione con le interfacce per gestire sostituibilità
   }}
-  \bl{Possibile design}{\iz{
-    \item interfaccia \cil{Counter}, implementazione \cil{CounterImpl}, e poi \cil{MultiCounterImpl} che implementa \cil{Counter} e si compone di un \cil{CounterImpl}
+  \bl{Possibile design per ottenere anche sostituibilità}{\iz{
+    \item interfaccia \cil{CounterAbs}, implementazione \cil{CounterImpl}, e poi \cil{MultiCounterImpl} che implementa \cil{CounterAbs} e si compone di un \cil{CounterImpl} (nomi non ottimali)
   }}
 }
 
 \fr{Interfaccia \Cil{Counter} e classe \Cil{UseMultiCounter}}{
-  \srcode{\scriptsize}{3}{32}{\ecl/composition/Counter.java}
+  \srcode{\scriptsize}{3}{32}{\ecl/composition/CounterAbs.java}
   \srcode{\scriptsize}{3}{32}{\ecl/composition/UseMultiCounter.java}
 }
 

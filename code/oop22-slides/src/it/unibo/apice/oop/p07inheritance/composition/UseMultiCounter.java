@@ -3,7 +3,7 @@ package it.unibo.apice.oop.p07inheritance.composition;
 public class UseMultiCounter {
     public static void main(String[] s) {
         final MultiCounterImpl mc = new MultiCounterImpl(10);
-        final Counter c = mc;
+        final CounterAbs c = mc;
 
         System.out.println(c.getValue()); // 10
         c.increment();

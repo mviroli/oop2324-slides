@@ -1,6 +1,6 @@
 package it.unibo.apice.oop.p07inheritance.composition;
 
-public class CounterImpl implements Counter {
+public class CounterImpl implements CounterAbs {
 
 	private int value;
 

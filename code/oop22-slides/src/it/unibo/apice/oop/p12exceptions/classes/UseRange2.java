@@ -8,7 +8,7 @@ public class UseRange2{
     		final int b = Integer.parseInt(s[1]);
     	    r = new RangeIterator(a,b);
     	} catch (Exception e){ // catturo una qualsiasi Exception
-    	    System.out.println("Argomenti errati!");
+    	    System.out.println("Wrong arguments!");
     	    System.out.println(e);
     	    System.exit(1); // abnormal termination
     	}
@@ -17,7 +17,7 @@ public class UseRange2{
     	    System.out.print(r.next()+" ");
     	    System.out.println(r.next());
     	} catch (java.util.NoSuchElementException e){
-    	    System.out.println("Iterazione non corretta..");
+    	    System.out.println("Iteration not correct...");
     	    System.out.println(e);
     	    System.exit(1); // abnormal termination
     	}

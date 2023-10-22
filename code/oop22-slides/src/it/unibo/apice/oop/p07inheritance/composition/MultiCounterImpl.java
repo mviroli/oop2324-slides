@@ -1,8 +1,8 @@
 package it.unibo.apice.oop.p07inheritance.composition;
 
-public class MultiCounterImpl implements Counter {
+public class MultiCounterImpl implements CounterAbs {
 
-    private final Counter counter;
+    private final CounterAbs counter;
 
     public MultiCounterImpl(final int initialValue) {
         this.counter = new CounterImpl(initialValue);

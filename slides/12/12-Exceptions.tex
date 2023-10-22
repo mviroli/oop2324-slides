@@ -250,7 +250,7 @@
 }
 
 \fr{\Cil{catch} multipli e \Cil{finally}}{
-  \sizedcode{\scriptsize}{code/classes/UseRange3.java}
+  \sizedrangedcode{\scriptsize}{3}{30}{\ecl/classes/UseRange3.java}
 }
 
 \fr{Spiegazione}{
@@ -268,6 +268,11 @@
     \item consente di non esprimere il \cil{finally}
   }}
 }
+
+\fr{\Cil{catch} multiplo con ``alternative types''}{
+  \sizedrangedcode{\scriptsize}{3}{30}{\ecl/classes/UseRange4.java}
+}
+
 
 \section{Creazione e rilancio eccezioni}
 
@@ -329,7 +334,7 @@
   \sizedrangedcode{\ssmall}{3}{30}{\ecl/classes/IOFromKeyboard3.java}
 }
 
-\fr{Input da tastiera: da Java 6 (non funziona in Eclipse!)}{
+\fr{Input da tastiera senza eccezioni)}{
   \sizedrangedcode{\scriptsize}{3}{30}{\ecl/classes/IOFromKeyboard4.java}
 }
 
@@ -385,15 +390,11 @@
   \sizedrangedcode{\ssmall}{3}{100}{\ecls/UseDevice.java}
 }
 
-\fr{Una applicazione completa}{
-  \bl{Elementi aggiuntivi}{\iz{
-    \item Vi dovrà essere una interazione con l'utente
-    \item Potrà da console fornire i comandi: \cil{+N}, \cil{-N}, \cil{+all}, \cil{-all}, \cil{exit}
-    \item ..e vedere direttamente l'effetto che hanno sul \cil{DeviceRow}
-    \item (è un prodromo di applicazione con GUI..)
-  }}
-  \bl{Un problema architetturale}{\iz{
-    \item come allestire una applicazione con interazione con l'utente?
+\fr{Best practice con le eccezioni}{
+  \bl{Che ricapitoleremo e discuteremo a fine corso}{\iz{
+    \item i metodi pubblici controllino subito la validità degli input, lanciando eccezioni unchecked per segnalare il ``bug'' 
+    \item si riusino in via prioritaria le eccezioni delle librerie Java 
+    \item se un problema non è dovuto a bug, sarebbe meglio non lanciare eccezioni, ma fornire un output che rappresenta l'anomalia
   }}
 }
 

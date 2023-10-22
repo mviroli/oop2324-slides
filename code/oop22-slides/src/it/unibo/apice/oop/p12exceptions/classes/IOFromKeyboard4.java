@@ -2,11 +2,10 @@ package it.unibo.apice.oop.p12exceptions.classes;
 
 public class IOFromKeyboard4 {
 
-	// L'uso di System.console().readLine() non lancia
-	// eccezioni
+	// L'uso di System.console().readLine() non lancia eccezioni
 	public static void main(String[] args) {
 		while (true) {
-			System.out.print("Inserisci un numero: ");
+			System.out.print("Insertisci un numero: ");
 			final int a = Integer.parseInt(System.console().readLine());
 			System.out.println("Hai inserito il num.: " + a);
 		}

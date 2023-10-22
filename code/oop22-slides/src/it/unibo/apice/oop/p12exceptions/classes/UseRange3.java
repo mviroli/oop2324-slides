@@ -10,11 +10,10 @@ public class UseRange3{
     	    System.out.print(r.next()+" ");
     	    System.out.print(r.next()+" ");
     	    System.out.println(r.next());
-    	    throw new Error();
     	} catch (ArrayIndexOutOfBoundsException e){
-    	    System.out.println("Servono almeno due argomenti!");
+    	    System.out.println("Need two arguments!");
     	} catch (NumberFormatException e){
-    	    System.out.println("Servono argomenti interi!");
+    	    System.out.println("Need integer arguments!");
     	} catch (IllegalArgumentException e){
     	    System.out.println(e);
     	} catch (Exception e){ //ogni altra eccezione

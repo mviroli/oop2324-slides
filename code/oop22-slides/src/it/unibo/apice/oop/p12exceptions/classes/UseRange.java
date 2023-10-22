@@ -12,9 +12,9 @@ public class UseRange{
     		System.out.print(r.next()+" ");
     		System.out.println(r.next());
     	} catch (final java.util.NoSuchElementException e){
-    		System.out.println("eccezione.. ma continua "+e.toString());
+    		System.out.println("exception... but we go on "+e.toString());
     	}
-    	System.out.println("fine programma");
+    	System.out.println("end");
     }
 }
 /* Esecuzione: java UseRange 5 10
