@@ -5,7 +5,7 @@ import java.lang.reflect.*;
 public class ExampleObject {
 
 	public static void main(String[] args) throws Exception{
-		Class<?> c = Class.forName("it.unibo.apice.oop.p16reflection.classes.Counter");
+		Class<?> c = Class.forName("it.unibo.apice.oop.p14reflection.classes.Counter");
 		System.out.println(c);
 		
 		Object o = c.newInstance();
