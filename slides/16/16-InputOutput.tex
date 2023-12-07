@@ -40,7 +40,7 @@
   \bl{La libreria \cil{java.io.*}}{\iz{
     \item Fornisce i concetti di File e Stream di dati
     \item Consente una gestione flessibile dei vari aspetti
-    \item È estesa con alcune funzionalità nella libreria \cil{java.nio}, che vedremo poi
+    \item È estesa con alcune funzionalità di facciata nella libreria \cil{java.nio}
     \item È la base di librerie avanzate (networking,\dots), anche non-JDK (JSON,\dots)
     \item I/O con l'utente in ambiente a finestre è realizzato con le GUI
   }}
@@ -70,8 +70,8 @@
 	\item Fornisce meccanismi per fornire prestazioni, concorrenza, robustezza
     }}
     \bl{File}{\iz{
-	\item Un file system contiene un insieme di \alert{file}
-	\item Un file ha un contenuto informativo, ossia un insieme di byte{\iz{
+	\item Un file system contiene/gestisce un insieme di \alert{file}
+	\item Un file ha un contenuto informativo, tipicamente una sequenza di byte{\iz{
 	    \item interpretabili in vario modo (testi, programmi, strutture dati)
 	    \item potrebbe essere un file virtuale, che mappa un dispositivo
 	    \item un caso particolare è la directory (ossia una tabella di ID di file)
@@ -186,7 +186,7 @@ getClass class java.io.File
 
 \fr{Il costrutto \Cil{try-with-resources}}{
     \bl{Costrutto \cil{try-with-resources}}{\iz{
-      \item vuole la creazione di un \cil{java.lang.AutoCloseable} come primo argomento
+      \item vuole la definizione/creazione di un \cil{java.lang.AutoCloseable} come primo argomento
       \item ne assicura la chiusura 
       \item si possono opzionalmente aggiungere delle \cil{catch} di eccezioni
       \item andrebbe sempre usato\dots
@@ -313,27 +313,6 @@ getClass class java.io.File
 
 \section{Serializzazione di oggetti}
 
-\fr{File ed encoding}{
-    \bl{Il contenuto dei file} {
-      Supponiamo utilizziate un \cil{DataOutputStream} per scrivere in sequenza i numeri da 0 a 20 (escluso)
-        \iz {
-            \item Che cosa avete realmente scritto?
-            \item avete scritto i byte da zero a 19
-            \item In esadecimale, \cil{0x000102030405060708090A0B0C0D0E0F10111213}
-            \item \textbf{Non} avete scritto il testo \cil{012345678910111213141516171819}
-        }
-    }
-    \iz {
-        \item I file sono sequenze di byte
-        \item Per fare input/output occorre stabilire:
-        \iz {
-          \item Una conversione dalla struttura dati che stiamo manipolando a sequenza di byte (encoding)
-          \item Una conversione da sequenza di byte a struttura dati (decoding)
-        }
-        \item I \cil{Data-Stream} offrono encoding e decoding per tipi primitivi
-        \item Come trattare strutture dati più articolate?
-    }
-}
 
 \fr{Serializzazione di oggetti}{
     \bl{Motivazioni}{\iz{
@@ -516,29 +495,6 @@ getClass class java.io.File
 
 \section{File di testo}
 
-\fr{Limitazione degli stream binari visti finora}{
-  Finora abbiamo visto stream binari, ed in particolare di oggetti Java
-  \iz {
-    \item Non esiste uno standard documentato
-    \iz {
-      \item Gli standard descrivono in modo inequivoco un protocollo (in questo caso di de/serializzazione)
-      \item Difficile scrivere librerie per leggere e scrivere in quel formato
-      \item Bassa \textbf{standardizzazione}
-    }
-    \item Non comprensibili da applicazioni non-Java
-    \iz {
-      \item Oggetti serializzati non apribili da applicazioni in Javascript, Python, eccetera
-      \item Non adatti e.g., per applicazioni web
-      \item Bassa \textbf{portabilità}
-    }
-    \item Non comprensibili se aperti in formato testuale
-    \iz {
-      \item Non modificabili da umani
-      \item Non adatti e.g., per file di configurazione
-      \item Bassa \textbf{leggibilità} e quindi \textbf{intelligibilità}
-    }
-  }
-}
 
 \fr{Limitazione degli stream binari visti}{
   \bl{Standardizzazione e portabilità} {
@@ -551,10 +507,10 @@ getClass class java.io.File
   \bl{Leggibilità e intelligibilità} {
     \iz {
       \item Problema comune a tutti i meccanismi finora visti
-      \item Esistono standard per scrivere oggetti in formato testuale
+      \item Esistono standard per scrivere dati in formato testuale
       \item Problema da risolvere in due fasi:
-      \iz {
-        \item Conversione da oggetto a stringa di testo e viceversa
+      \en {
+        \item Conversione da dato a stringa di testo e viceversa
         \item Conversione da stringa di testo a file e viceversa
       }
     }
@@ -702,3 +658,45 @@ getClass class java.io.File
 
 
 \end{document}
+\fr{File ed encoding}{
+    \bl{Il contenuto dei file} {
+      Supponiamo di utilizzare un \cil{DataOutputStream} per scrivere in sequenza i numeri da 0 a 20 (escluso)
+        \iz {
+            \item Quali bit vengono scritti in realtà? Non è noto, dipende dall'implementazione della libreria\dots
+            \item Ossia, si usa una codica non standard e non ``open''
+        }
+    }
+    \iz {
+        \item I file sono sequenze di byte
+        \item Per fare input/output occorre stabilire:
+        \iz {
+          \item Una conversione dalla struttura dati che stiamo manipolando a sequenza di byte (encoding)
+          \item Una conversione da sequenza di byte a struttura dati (decoding)
+        }
+        \item I \cil{Data-Stream} offrono encoding e decoding per tipi primitivi
+        \item Come trattare strutture dati più articolate?
+    }
+}
+\fr{Limitazione degli stream binari visti finora}{
+  Finora abbiamo visto stream binari, ed in particolare di oggetti Java
+  \iz {
+    \item Non esiste uno standard documentato
+    \iz {
+      \item Gli standard descrivono in modo inequivoco un protocollo (in questo caso di de/serializzazione)
+      \item Difficile scrivere librerie per leggere e scrivere in quel formato
+      \item Bassa \textbf{standardizzazione}
+    }
+    \item Non comprensibili da applicazioni non-Java
+    \iz {
+      \item Oggetti serializzati non apribili da applicazioni in Javascript, Python, eccetera
+      \item Non adatti e.g., per applicazioni web
+      \item Bassa \textbf{portabilità}
+    }
+    \item Non comprensibili se aperti in formato testuale
+    \iz {
+      \item Non modificabili da umani
+      \item Non adatti e.g., per file di configurazione
+      \item Bassa \textbf{leggibilità} e quindi \textbf{intelligibilità}
+    }
+  }
+}

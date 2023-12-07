@@ -50,7 +50,7 @@
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
   language=java,                   % the language of the code
-  morekeywords={var},            % if you want to add more keywords to the set
+  morekeywords={var,record},            % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
   numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
@@ -102,7 +102,7 @@
 \newcommand{\sizedcode}[2]{\lstinputlisting[basicstyle=#1\ttfamily]{#2}}
 \newcommand{\smallcode}[1]{\sizedcode{\tiny}{#1}}
 \newcommand{\sizedrangedcode}[4]{\lstinputlisting[basicstyle=#1\ttfamily,firstline=#2,lastline=#3]{#4}}
-\newcommand{\sizedrangedcodet}[4]{\lstinputlisting[tabsize=4,basicstyle=#1\ttfamily,firstline=#2,lastline=#3]{#4}}
+\newcommand{\sizedrangedcodet}[4]{\lstinputlisting[tabsize=4,basicstyle=#1\ttfamily,firstline=#2,lastline=#3,]{#4}}
 \newcommand{\srcode}[4]{\sizedrangedcode{#1}{#2}{#3}{#4}}
 \newcommand{\fg}[2]{\vspace{-5pt}\begin{center}\includegraphics[#1]{#2}\end{center}}
 \newcommand{\myurl}[1]{{\footnotesize{\url{#1}}}}

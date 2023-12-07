@@ -23,7 +23,7 @@ public class AllLambdas {
 		});
 		System.out.println(list); // [a, c, bb, ddd]
 
-		// sintassi con single-expression body
+		// sintassi con type inference e single-expression body
 		Collections.sort(list, (a, b) -> a.length() - b.length()); 
 		System.out.println(list); // [a, c, bb, ddd]
 

@@ -61,10 +61,10 @@
 \frs{5}{Elementi delle lambda expression}{
   \bl{Che cos'è una lambda}{\iz{
     \item è una funzione (anonima) con accesso ad uno scope locale
-    \item è applicabile a certi input, e dà un risultato (oppure \cil{void})
+    \item è applicabile a certi input (0, 1 o più), e dà un risultato (oppure \cil{void})
     \item per calcolare il risultato potrebbe usare qualche variabile nello scope in cui è definita -- stesso scope delle classi anonime
     \item la lambda è usabile come ``valore'' (quindi, come dato), ossia è passabile a metodi, altre funzioni, o memorizzata in variabili/campi
-    \item ossia si può ``passare'' del ``codice''
+    \item ossia è una tecnica per ``passare del codice'' (come lo Strategy)
   }}
   \bl{Caratteristica specifica di Java}{\iz{
     \item come vedremo, una lambda è un oggetto, ed è passabile là dove ci si aspetta una \cil{interface} detta ``funzionale''
@@ -178,7 +178,7 @@
 }
 
 \fr{Esempio \Cil{SimpleIterator}}{
-    \sizedrangedcode{\ssmall}{5}{100}{\ecl/interfaces/SimpleIterator2.java}
+    \sizedrangedcode{\scriptsize}{5}{100}{\ecl/interfaces/SimpleIterator2.java}
 }
 
 \section{Lambda expressions nell'API di Java}
@@ -190,7 +190,7 @@
       \item Altrimenti, è bene usare interfacce di libreria ``note''
     }}
     \bl{In \cil{java.util.function} vengono fornite varie interfacce ``general purpose''}{\iz{
-      \item Sono tutte funzionali
+      \item Sono tutte funzionali, e altamente generiche
       \item Hanno metodi aggiuntivi default di cui non ci occupiamo
       \item Hanno un metodo ``astratto'' chiamato, a seconda: \\ \cil{apply}, \cil{accept}, \cil{test} o \cil{get}; è quello da chiamare per applicare la funzione
     }}    
@@ -207,7 +207,7 @@
 \item \cil{BiFunction<T,U,R>}:	\texttt{apply:(T,U)->R}
 \item \cil{BinaryOperator<T>}: 	\texttt{apply:(T,T)->T}
 \item \cil{BiPredicate<T,U>}: \texttt{test:(T,U)->boolean}
-\item \cil{java.lang.Runnable}: \texttt{run:()->void}
+\item \cil{java.lang.Runnable}: \texttt{run:()->void}, usato nella concorrenza
     }}    
   \bl{Altre interfacce (usano i tipi primitivi senza boxing)}{\iz{
   \item \texttt{BooleanSupplier}: \texttt{get:()->boolean}
@@ -266,14 +266,14 @@
     \bl{Il problema del \cil{NullPointerException}}{\iz{
       \item è una eccezione particolarmente annosa (è ora la più frequente)
       \item a volte è inevitable inizializzare a \cil{null} campi/variabili, o tornare valori null.. ma poi si rischia di ritrovarsi l'eccezione in punti non aspettati
-      \item nella programmazione moderna, gestire l'assenza di una informazione con \cil{null} è inappropriato!
+      \item nella programmazione moderna, gestire l'assenza di una informazione con \cil{null} è considerato inappropriato: il \cil{null} non andrebbe proprio più usato.
     }}
     \bl{Idea}{\iz{
       \item la classe \cil{Optional<T>} và usata ove ci si attende opzionalmente un oggetto di tipo \cil{T}
       \item un oggetto di \cil{Optional<T>} è un wrapper di un \cil{T}, ma potrebbe non contenere nulla, ossia è una collezione di 0 o 1 elemento di tipo \cil{T} 
       \item accedendovi con metodi quali \cil{ifPresent()} o \cil{orElse()} si bypassa il problema del \cil{null}
       \item c'è comunque un metodo \cil{get()} che rilancia l'eccezione uncheked \cil{NoSuchElementException}
-      \item purtroppo \cil{Optional<T>} NON è serializzabile!
+      \item \cil{Optional<T>} NON è serializzabile: serve quindi serailizzazione ad-hoc!
     }}
     
 }
@@ -344,6 +344,29 @@
 
 \fr{\Cil{switch} expressions}{
     \sizedrangedcode{\tiny}{6}{100}{\ecl/switches/SwitchExpression.java}
+}
+
+\section{Records}
+
+\frs{5}{Records}{
+    \bl{Classi implementate come record}{\iz{
+        \item un meccanismo introdotto in Java 14
+        \item serve a dichiarare una classe con certi campi immutabili, e evitare tutto il boilerplate code di solito necessario
+        \item promuove l'immutabilità dei dati, via sintassi concisa: da usare quando possibile!
+    }}
+    \bl{Meccanismo: \cil{record C(T1 x1, ..., Tn xn) implements I1,...,Ik\{...\}}}{\iz{
+        \item realizzata come ``\cil{class C implements I1,...,Ik \{...\}}'', e\dots
+        \item con campi privati e finali \cil{T1 x1}, ..., \cil{Tn xn}
+        \item con costruttore con parametri \cil{x1...xn} -- costruttore ridefinibile
+        \item con getters \cil{public T1 x1()} ... \cil{public Tn xn()}
+        \item con \cil{equals}, \cil{hashcode} e \cil{toString}: usano tutti i campi
+        \item non ammette ereditarietà, non ammette aggiunte di campi istanza
+        \item si possono aggiungere altre cose: metodi, membri statici, eccetera
+    }}
+}
+
+\fr{\Cil{record} example}{
+  \sizedrangedcode{\tiny}{3}{100}{\ecl/records/TryRecords.java}
 }
 
 
